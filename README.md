@@ -23,6 +23,10 @@ gem `i18n_admin_utils`, :github => 'timcolonel/i18n_admin_utils'
 ```
 
 Initialize
-```
+```bash
 rails g i18n_admin_utils:install
 ```
+
+#Configuration
+The config is in 'config/initializer/i18n_admin_utils.rb'
+
