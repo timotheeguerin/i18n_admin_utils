@@ -13,3 +13,16 @@ In devlopmment...
 **IN PROGRESS**
 * Retreive all the translation used inside your application and check they have been translated.
 * Check all the text you have entered in your application withour using t()
+
+
+#Installation
+Get the gem in your gemfile 
+```ruby
+gem `i18n_admin_utils`, :github => 'timcolonel/i18n_admin_utils'
+
+```
+
+Initialize
+```
+rails g i18n_admin_utils:install
+```
