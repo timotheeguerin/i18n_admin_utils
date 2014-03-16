@@ -33,15 +33,22 @@ module I18nAdminUtils
       end
     end
 
+    #Return a list of all the missing translation
+    def missing_list
+      translation = I18nAdminUtils::SearchTranslation.search
+      puts translation
+      render :partial => 'missing_list', :layout => false, :locals=> {:translation => translation}
+    end
+
     def i18n_redirect(message, success = true)
       if request.xhr?
         render :json => {:success => success, :message => message}
       else
         if success
           redirect_to :back, :notice => message
-          else
-            redirect_to :back, :alert => message
-          end
+        else
+          redirect_to :back, :alert => message
+        end
       end
     end
   end
