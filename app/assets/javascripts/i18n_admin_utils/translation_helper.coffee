@@ -33,14 +33,14 @@ $(document).ready () ->
     return false
 
 get_content = (span)->
-  url = '/translation/update'
+  url = '/translation/edit'
   key = span.attr('title').match(/translation missing: (.*)/)[1]
   console.log(key)
   content = "<form action='" + url + "' method='post' class='translation_helper'>"
   content += "<div class='alert alert-danger hidden'></div>"
   content += "<input type='hidden' name='key' value='" + key + "'>"
   content += "<label>Translate " + key + "</label>"
-  content += "<input type='text' name='translation' class='form-control'>"
+  content += "<input type='text' name='value' class='form-control'>"
   content += "<hr>"
   content += "<button class='btn btn-primary'>Add translation</button>"
   content += "</form>"
