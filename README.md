@@ -30,3 +30,20 @@ rails g i18n_admin_utils:install
 #Configuration
 The config is in 'config/initializer/i18n_admin_utils.rb'
 
+
+#How to use
+### Live editing
+Click on a missing translation on the page to display a popover to translate the key.
+
+![](https://f.cloud.github.com/assets/1031227/2431014/d6503c64-ad14-11e3-9fcf-f5339e1af69b.PNG)
+
+
+### List of all untranslated key in app 
+Search the entire project for the use of the t('') method. All the untranslated key without a translation will be displayed
+
+***TODO***
+### List the content not using the translation method
+Search views for usage of text without using the translation method. This allow you to check your app fully support internationalisation.
+
+
+***TODO***
