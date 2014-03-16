@@ -7,11 +7,11 @@ require "i18n_admin_utils/version"
 Gem::Specification.new do |s|
   s.name        = "i18n_admin_utils"
   s.version     = I18nAdminUtils::VERSION
-  s.authors     = ["TODO: Your name"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of I18nAdminUtils."
-  s.description = "TODO: Description of I18nAdminUtils."
+  s.authors     = ["Timothee Guerin"]
+  s.email       = ["timothee.guerin@outlook.com"]
+  s.homepage    = "http://github.com/timcolonel"
+  s.summary     = "Utils to help manage active record translation in a rails application"
+  s.description = "Utils to help manage active record translation in a rails application"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
