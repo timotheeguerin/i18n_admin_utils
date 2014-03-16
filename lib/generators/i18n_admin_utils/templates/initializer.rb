@@ -5,4 +5,7 @@ I18nAdminUtils.config do |config|
 
   #Reload the translation after they have been updated
   config.reload_translation_after_update = true
+
+  #List of locales used in your application
+  config.locales = ['en']
 end

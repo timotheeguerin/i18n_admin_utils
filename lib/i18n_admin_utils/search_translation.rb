@@ -17,8 +17,10 @@ module I18nAdminUtils
       missing = []
       results.each do |result|
         locale = 'en'
-        if I18nAdminUtils::Config.translation_model.where(:locale => locale, :key => result).first.nil?
-          missing << {:locale => locale, :key => result}
+        I18nAdminUtils::Config.locales.each do |locale|
+          if I18nAdminUtils::Config.translation_model.where(:locale => locale, :key => result).first.nil?
+            missing << {:locale => locale, :key => result}
+          end
         end
       end
       missing
