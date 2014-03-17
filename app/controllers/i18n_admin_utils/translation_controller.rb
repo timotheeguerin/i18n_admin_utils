@@ -18,6 +18,7 @@ module I18nAdminUtils
             key = split[1]
           else
             i18n_redirect('No locale specified')
+            return
           end
         end
         translation = I18nAdminUtils::Config.translation_model.where(:locale => locale, :key => key).first
