@@ -5,6 +5,7 @@ module I18nAdminUtils
     class << self
       attr_accessor :translation_model
       attr_accessor :reload_translation_after_update
+      attr_accessor :locales
 
       def reset
         @translation_model = 'Translation'
