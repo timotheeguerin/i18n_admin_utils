@@ -6,7 +6,7 @@ Utils to help manage translation with a rails app
 
 **In devlopment...**
 
-Please report bugs https://github.com/timcolonel/i18n_admin_utils/issues
+Please report bugs and features proposition https://github.com/timcolonel/i18n_admin_utils/issues
 
 
 #Planned features
