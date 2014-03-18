@@ -31,6 +31,10 @@ Initialize
 rails g i18n_admin_utils:install
 ```
 
+Include javascript in `application.html.erb`
+```erb
+<%= javascript_include_tag 'i18n_admin_utils/translation_helper' if Rails.env.development? %>
+```
 #Configuration
 The config is in 'config/initializer/i18n_admin_utils.rb'
 
