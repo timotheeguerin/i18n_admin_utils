@@ -40,7 +40,8 @@ Click on a missing translation on the page to display a popover to translate the
 
 ### List of all untranslated key in app 
 Search the entire project for the use of the t('') method. All the untranslated key without a translation will be displayed
-Current view ***Styling in progress ***
+
+Current view ***(Styling in progress)***
 ![Preview](https://f.cloud.github.com/assets/1031227/2444217/48365ab4-ae4d-11e3-80f2-cb080831da24.PNG)
 
 ### List the content not using the translation method
