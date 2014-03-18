@@ -1,4 +1,4 @@
-i18n_admin_utils
+i18n_admin_utils[![Gem Version](https://badge.fury.io/rb/i18n_admin_utils.png)](http://badge.fury.io/rb/i18n_admin_utils)
 ================
 
 Utils to help manage translation with a rails app
