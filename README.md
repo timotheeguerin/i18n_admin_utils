@@ -18,7 +18,7 @@ In devlopmment...
 #Installation
 Get the gem in your gemfile 
 ```ruby
-gem `i18n_admin_utils`, :github => 'timcolonel/i18n_admin_utils'
+gem `i18n_admin_utils`
 
 ```
 
