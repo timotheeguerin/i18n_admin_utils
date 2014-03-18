@@ -4,7 +4,7 @@ i18n_admin_utils[![Gem Version](https://badge.fury.io/rb/i18n_admin_utils.png)](
 Utils to help manage translation with a rails app
 
 
-**In devlopmment...**
+**In devlopment...**
 
 Please report bugs https://github.com/timcolonel/i18n_admin_utils/issues
 
