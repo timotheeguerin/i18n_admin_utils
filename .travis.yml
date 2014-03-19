@@ -9,6 +9,5 @@ gemfile:
 
 matrix:
 
-
 notifications:
   email: false
