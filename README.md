@@ -1,5 +1,7 @@
-i18n_admin_utils  [![Gem Version](https://badge.fury.io/rb/i18n_admin_utils.png)](http://badge.fury.io/rb/i18n_admin_utils) [![Code Climate](https://codeclimate.com/github/timcolonel/i18n_admin_utils.png)](https://codeclimate.com/github/timcolonel/i18n_admin_utils)
+i18n_admin_utils 
 ================
+[![Gem Version](https://badge.fury.io/rb/i18n_admin_utils.png)](http://badge.fury.io/rb/i18n_admin_utils) [![Build Status](https://travis-ci.org/timcolonel/i18n_admin_utils.png?branch=master)](https://travis-ci.org/timcolonel/i18n_admin_utils)  [![Code Climate](https://codeclimate.com/github/timcolonel/i18n_admin_utils.png)](https://codeclimate.com/github/timcolonel/i18n_admin_utils)
+
 
 Utils to help manage translation with a rails app
 
