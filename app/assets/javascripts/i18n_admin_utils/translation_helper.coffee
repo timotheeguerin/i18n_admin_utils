@@ -11,6 +11,12 @@ $(document).ready () ->
       content: content
     })
 
+  $('.loadonready').each () ->
+    container = $(this)
+    url = container.data('url')
+    $.get(url).success (data) ->
+      container.html(data)
+
   $(document).on 'submit', 'form.translation_helper', (e)->
     e.preventDefault()
     form = $(this)
@@ -29,7 +35,6 @@ $(document).ready () ->
         handle_error(form,  data)
     ).error (data) ->
       handle_error(form, data)
-
     return false
 
 get_content = (span)->
