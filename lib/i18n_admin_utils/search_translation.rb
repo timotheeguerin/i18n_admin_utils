@@ -1,8 +1,13 @@
 module I18nAdminUtils
   class SearchTranslation
     def self.search
+      results = find_transaltion
+      check_results(results)
+    end
+
+    def self.find_transaltion
       results = []
-      dirs = ["#{Rails.root}/app"]
+      dirs = I18nAdminUtils::Config.search_folders
       dirs.each do |dir|
         Dir.glob("#{dir}/**/*.*").each do |filename|
           File.open(filename).read.scan(/t\(("(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*')\)/).each do |result|
@@ -10,7 +15,7 @@ module I18nAdminUtils
           end
         end
       end
-      check_results(results)
+      results
     end
 
     def self.check_results(results)

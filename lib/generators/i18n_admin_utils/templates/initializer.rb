@@ -8,4 +8,12 @@ I18nAdminUtils.config do |config|
 
   #List of locales used in your application
   config.locales = ['en']
+
+
+  #List of folder where the app will look for the use of the t() method
+  config.search_folders = ["#{Rails.root}/app"]
+
+  #To exclude some folder included in the search_folders
+  #Not working yet!
+  #config.search_folders_exclude = []
 end

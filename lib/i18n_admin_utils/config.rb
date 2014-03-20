@@ -6,10 +6,15 @@ module I18nAdminUtils
       attr_accessor :translation_model
       attr_accessor :reload_translation_after_update
       attr_accessor :locales
+      attr_accessor :search_folders
+      attr_accessor :search_folders_exclude
 
       def reset
         @translation_model = 'Translation'
         @reload_translation_after_update = true
+        @locales = ['en']
+        @search_folders = ["#{Rails.root}/app"]
+        @search_folders_exclude = []
       end
 
 
