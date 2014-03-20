@@ -26,4 +26,10 @@ class ConfigTest < ActiveSupport::TestCase
 
     assert I18nAdminUtils::Config.translation_model == TestTranslationModel
   end
+
+  test 'Test config function without param' do
+    assert I18nAdminUtils.config == I18nAdminUtils::Config
+  end
+
+
 end

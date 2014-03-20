@@ -38,7 +38,7 @@ module I18nAdminUtils
     def missing_list
       translation = I18nAdminUtils::SearchTranslation.search
       puts translation
-      render :partial => 'missing_list', :layout => false, :locals=> {:translation => translation}
+      render :partial => 'missing_list', :layouts => false, :locals=> {:translation => translation}
     end
 
     def i18n_redirect(message, success = true)

@@ -19,5 +19,6 @@ Gem::Specification.new do |s|
   s.add_dependency 'rails', '~> 4.0', '>=4.0.0'
   s.add_dependency 'json', '>= 0'
   s.add_dependency 'i18n-active_record', '>= 0'
+  s.add_dependency 'bootstrap-sass', '~> 3.1.1', '~> 3.1.0'
   s.add_development_dependency 'sqlite3', '>= 0'
 end
