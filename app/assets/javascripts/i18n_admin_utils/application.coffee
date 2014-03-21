@@ -16,3 +16,12 @@
 #= require_tree .
 #= require bootstrap
 
+$(document).ready ()->
+  window.load_script_on($(this))
+
+#Rerun this command for reloading script for new element added with ajax for example
+window.load_script_on = (container) ->
+  container.find("[rel=tooltip]").tooltip({ container: 'body', animation: false, delay: 0});
+  container.find("[rel=popover]").popover({ container: 'body', animation: false, delay: 0, trigger: 'hover'});
+  container.find('[data-toggle="modal"]').modal('hide')
+

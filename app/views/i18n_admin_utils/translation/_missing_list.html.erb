@@ -1,29 +1,75 @@
 <div>
-  <% translation.each do |translation| %>
-      <div class='container'>
+  <table class='table'>
+    <tr>
+      <th>
+        Locale
+      </th>
+
+      <th>
+        Key
+      </th>
+
+      <th>
+        Translation
+      </th>
+
+      <th>
+        <div class='pull-right'>
+          Submit
+        </div>
+      </th>
+    </tr>
+    <% translation.each do |translation| %>
+
         <%= form_tag translation_edit_path, :class => 'translation_helper form-horizontal' do %>
-            <div class='' data-locale='<%= translation[:locale] %>' data-key='<%= translation[:key  ] %>'>
-              <div class='row'>
-                <div class='col-md-1'>
-                  <%= translation[:locale] %>
+            <tr class='' data-locale='<%= translation[:locale] %>' data-key='<%= translation[:key] %>'>
+              <td>
+                <%= translation[:locale] %>
+              </td>
+              <td>
+                <%= translation[:key] %>
+              </td>
+              <%= hidden_field_tag :locale, translation[:locale] %>
+              <%= hidden_field_tag :key, translation[:key] %>
+              <td>
+                <div class='input-group'>
+                  <%= text_field_tag :value, '', :class => 'form-control' %>
+                  <% id = "#{translation[:locale]}_#{translation[:key]}".gsub(/\./, '_') %>
+                  <span class="input-group-btn">
+                      <button class='btn btn-default' title='Click to open larger edit box' rel='tooltip' data-toggle="modal" data-target="#<%= id %>">
+                        <span class='glyphicon glyphicon-edit'></span>
+                      </button>
+                  </span>
                 </div>
-                <div class='col-md-3'>
-                  <%= translation[:key] %>
+                <div>
+                  <div class="modal fade" id="<%= id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="modal-title" id="myModalLabel">Input translation</h4>
+                        </div>
+                        <div class="modal-body">
+                          <%= text_area_tag :value_ta ,'',:class=>'form-control' %>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Ok</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <%= hidden_field_tag :locale, translation[:locale] %>
-                <%= hidden_field_tag :key, translation[:key] %>
-                <div class='col-md-4'>
-                  <%= text_area_tag :value, '', :class => 'form-control' %>
-                </div>
-                <div class='col-md-4'>
+              </td>
+              <td>
+                <div class='pull-right'>
                   <button class='btn btn-primary'>
                     Add
                   </button>
                 </div>
-              </div>
-              <hr>
-            </div>
+              </td>
+            </tr>
         <% end %>
-      </div>
-  <% end %>
+    <% end %>
+
+  </table>
 </div>

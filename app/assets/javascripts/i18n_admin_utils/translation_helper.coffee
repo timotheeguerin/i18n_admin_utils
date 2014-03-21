@@ -16,6 +16,7 @@ $(document).ready () ->
     url = container.data('url')
     $.get(url).success (data) ->
       container.html(data)
+      window.load_script_on(container)
 
   $(document).on 'submit', 'form.translation_helper', (e)->
     e.preventDefault()
