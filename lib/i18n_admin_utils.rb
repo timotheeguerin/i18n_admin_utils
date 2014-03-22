@@ -1,6 +1,7 @@
 require 'i18n_admin_utils/engine'
 require 'i18n_admin_utils/config'
 require 'i18n_admin_utils/search_translation'
+require 'i18n_admin_utils/search_result'
 
 module I18nAdminUtils
   def self.config(&block)
