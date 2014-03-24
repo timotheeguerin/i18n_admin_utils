@@ -57,7 +57,11 @@ To spot those translation you can add the class `.translation_missing` to your c
 Search the entire project for the use of the t('') method. All the untranslated key without a translation will be displayed
 
 Current view ***(Styling in progress)***
-![Preview](https://f.cloud.github.com/assets/1031227/2444217/48365ab4-ae4d-11e3-80f2-cb080831da24.PNG)
+![capture](https://f.cloud.github.com/assets/1031227/2495531/7a81cd9a-b2f9-11e3-9556-6224d43c1ce5.PNG)
+
+=========
+If your translation require a larger text you can click on the edit icon near the input to display a modal with a textarea
+![capture](https://f.cloud.github.com/assets/1031227/2495539/c917678a-b2f9-11e3-84f3-a6fe9f23492e.PNG)
 
 Go to `/translation` (Loading might be long if your app is large). You should have a list of key to translate(Don't foregt to setup the locales your application use in the config file). The plugin reload the translation after updating one(You can disable it in the config). So reloading this page should update the translation
 
