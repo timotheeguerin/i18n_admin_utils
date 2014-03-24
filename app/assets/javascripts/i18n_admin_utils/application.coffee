@@ -18,6 +18,14 @@
 
 $(document).ready ()->
   window.load_script_on($(this))
+  $(document).on 'click', 'form input.nosubmit, form button.nosubmit', (e) ->
+    e.preventDefault();
+
+  $(document).on 'keyup', 'input[data-update], textarea[data-update]', () ->
+    input = $(this)
+    form = input.closest('form')
+    console.log(form)
+    form.find('input[name="' + input.data('update') + '"], textarea[name="' + input.data('update') + '"]').val(input.val())
 
 #Rerun this command for reloading script for new element added with ajax for example
 window.load_script_on = (container) ->

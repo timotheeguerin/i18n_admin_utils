@@ -30,7 +30,7 @@ $(document).ready () ->
       data: form.serialize()
     }).success( (data) ->
       if data.success
-        form.find('button').html('Translation added')
+        form.find('button:not(.nosubmit)').html("<span class='glyphicon glyphicon-ok'></span>")
         form.find('div.alert').hide()
       else
         handle_error(form,  data)
