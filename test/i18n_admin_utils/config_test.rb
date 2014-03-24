@@ -31,23 +31,28 @@ class ConfigTest < ActiveSupport::TestCase
   end
 
   test 'test unique backend working' do
-    backends = [I18n::Backend::Simple, I18n::Backend::ActiveRecord]
-    backends.each do |backend|
-      I18nAdminUtils::Config.backend = nil
+    backends = {I18n::Backend::Simple => I18nAdminUtils::Backend::YmlManager,
+                I18n::Backend::ActiveRecord => I18nAdminUtils::Backend::ActiveRecordManager}
+
+    backends.each do |backend, manager|
+      I18nAdminUtils::Config.reset
       I18n.backend = backend.new
+      I18n.backend.reload!
       result = I18nAdminUtils::Config.backend
-      assert result == backend.to_s, "Wrong backend returned\n \t should have returned #{backend} \n\tbut returned #{result} "
+      assert result == manager, "Wrong backend returned\n \t should have returned #{manager} \n\tbut returned #{result} "
     end
   end
 
   test 'test backend chain' do
     I18n.backend = I18n::Backend::Chain.new(I18n::Backend::ActiveRecord.new, I18n::Backend::Simple.new)
-    I18nAdminUtils::Config.backend = nil
+    I18n.backend.reload!
+    I18nAdminUtils::Config.reset
     result = I18nAdminUtils::Config.backend
-    assert result == I18n::Backend::ActiveRecord.to_s, "Wrong backend returned\n \t should have returned #{I18n::Backend::ActiveRecord} \n\t but returned #{result} "
+    assert result == I18nAdminUtils::Backend::ActiveRecordManager,
+           "Wrong backend returned\n \t should have returned #{I18nAdminUtils::Backend::ActiveRecordManager} \n\t but returned #{result} "
   end
 
-  test 'test raise unsportted backend' do
+  test 'test raise unsupported backend' do
     I18n.backend = TestTranslationModel.new
     assert_raise Exception do
       I18nAdminUtils::Config.backend = nil

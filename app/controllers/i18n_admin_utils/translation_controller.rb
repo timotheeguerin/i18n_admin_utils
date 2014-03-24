@@ -10,7 +10,7 @@ module I18nAdminUtils
       else
         key = params[:key]
         locale = params[:locale]
-        value = params[:value]
+        translation = params[:value]
         if locale.nil?
           if key.include? '.'
             split = key.split('.', 2)
@@ -21,15 +21,7 @@ module I18nAdminUtils
             return
           end
         end
-        translation = I18nAdminUtils::Config.translation_model.where(:locale => locale, :key => key).first
-        if translation.nil?
-          translation = I18nAdminUtils::Config.translation_model.new
-          translation.locale = locale
-          translation.key = key
-        end
-        translation.value = value
-        translation.save
-        I18n.backend.reload! if I18nAdminUtils::Config.reload_translation_after_update
+        I18nAdminUtils::Backend::Manager.save_translation(locale, key, translation)
         i18n_redirect('Translation edited with success')
       end
     end

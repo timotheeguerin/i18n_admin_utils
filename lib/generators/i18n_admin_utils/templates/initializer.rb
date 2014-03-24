@@ -1,8 +1,8 @@
 I18nAdminUtils.config do |config|
 
   #Specify the backend if you are using the chain(it will use the first one by default)
-  #config.backend = I18n::Backend::Simple
-  #config.backend = I18n::Backend::ActiveRecord
+  #config.backend = 'I18n::Backend::Simple'
+  #config.backend = 'I18n::Backend::ActiveRecord'
 
   #Model that contains the translation must have locale, key and value columns
   config.translation_model = Translation
@@ -18,7 +18,7 @@ I18nAdminUtils.config do |config|
   config.search_folders = ["#{Rails.root}/app"]
 
   #Yml files if you are using a yml backend
-  config.yml_file = "#{Rails.root}/config/locale/i18_admin_utils"
+  config.yml_file = "#{Rails.root}/config/locales/i18_admin_utils"
 
   #To exclude some folder included in the search_folders
   #Not working yet!

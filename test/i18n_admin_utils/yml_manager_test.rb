@@ -14,7 +14,7 @@ module I18nAdminUtils
 
     test 'File should be created' do
       I18nAdminUtils::Config.yml_file = filename
-      yml = I18nAdminUtils::YmlManager.parse_yml('en')
+      yml = I18nAdminUtils::Backend::YmlManager.parse_yml('en')
       assert File.exists?("#{filename}.en.yml"), "Expected file #{filename}.en.yml to exist, but does not"
       assert yml, "Yml was not parsed: #{yml}"
     end
@@ -27,7 +27,8 @@ module I18nAdminUtils
       key = 'test.dumb.blabl'
       locale = 'en'
       translation = 'Dumbtranslation'
-      I18nAdminUtils::YmlManager.save_translation(locale, key, translation)
+      I18nAdminUtils::Backend::YmlManager.save_translation(locale, key, translation)
+      I18n.backend.reload!
       assert translation == I18n.t(key), "Translation should be #{translation} but is #{I18n.t(key)}"
     end
   end

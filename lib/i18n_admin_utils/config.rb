@@ -17,6 +17,7 @@ module I18nAdminUtils
         @search_folders = ["#{Rails.root}/app"]
         @search_folders_exclude = []
         @yml_file = ''
+        @backend = nil
       end
 
 
@@ -28,8 +29,14 @@ module I18nAdminUtils
         end
       end
 
-      def backend=(value)
-        @backend = value.to_s
+      def backend=(i18n_backend)
+        if i18n_backend.to_s == 'I18n::Backend::ActiveRecord'
+          @backend = I18nAdminUtils::Backend::ActiveRecordManager
+        elsif i18n_backend.to_s == 'I18n::Backend::Simple'
+          @backend = I18nAdminUtils::Backend::YmlManager
+        else
+          raise Exception, "I18nAdminUtils, backend #{i18n_backend} not supported!"
+        end
       end
 
       def backend
@@ -38,13 +45,7 @@ module I18nAdminUtils
           if i18n_backend == 'I18n::Backend::Chain' #If the backend is a chain but no backend was specified then we take the first one
             i18n_backend = I18n.backend.backends.first.class.to_s
           end
-          if i18n_backend == 'I18n::Backend::ActiveRecord'
-            @backend = 'I18n::Backend::ActiveRecord'
-          elsif i18n_backend == 'I18n::Backend::Simple'
-            @backend = 'I18n::Backend::Simple'
-          else
-            raise Exception, "I18nAdminUtils, backend #{i18n_backend} not supported!"
-          end
+          self.backend=i18n_backend
         end
         @backend
       end
