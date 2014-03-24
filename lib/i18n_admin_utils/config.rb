@@ -8,6 +8,7 @@ module I18nAdminUtils
       attr_accessor :locales
       attr_accessor :search_folders
       attr_accessor :search_folders_exclude
+      attr_accessor :yml_file
 
       def reset
         @translation_model = 'Translation'
@@ -15,6 +16,7 @@ module I18nAdminUtils
         @locales = ['en']
         @search_folders = ["#{Rails.root}/app"]
         @search_folders_exclude = []
+        @yml_file = ''
       end
 
 

@@ -13,6 +13,9 @@ I18nAdminUtils.config do |config|
   #List of folder where the app will look for the use of the t() method
   config.search_folders = ["#{Rails.root}/app"]
 
+  #Yml files if you are using a yml backend
+  config.yml_file = "#{Rails.root}/config/locale/i18_admin_utils"
+
   #To exclude some folder included in the search_folders
   #Not working yet!
   #config.search_folders_exclude = []
