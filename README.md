@@ -6,6 +6,9 @@ i18n_admin_utils
 Utils to help manage translation with a rails app
 
 
+
+#### [Changelog](https://github.com/timcolonel/i18n_admin_utils/wiki/Change-log)
+
 **In devlopment...**
 
 Please report bugs and features proposition https://github.com/timcolonel/i18n_admin_utils/issues
