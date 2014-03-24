@@ -15,3 +15,11 @@ gemspec
 gem 'coveralls', require: false
 
 gem 'i18n-active_record', :github => 'timcolonel/i18n-active_record', :require => 'i18n/active_record'
+
+gem 'minitest'
+
+gem 'minitest-reporters'
+
+gem 'jquery-rails'
+
+gem 'turbolinks'

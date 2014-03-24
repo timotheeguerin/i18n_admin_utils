@@ -1,3 +1,5 @@
+require 'bootstrap-sass' unless defined? Bootstrap
+
 require 'i18n_admin_utils/engine'
 require 'i18n_admin_utils/config'
 require 'i18n_admin_utils/search_translation'
