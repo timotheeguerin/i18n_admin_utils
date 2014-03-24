@@ -9,10 +9,12 @@ class I18nAdminUtils::TranslationControllerTest < ActionController::TestCase
   def filename
     File.join(destination, 'test_yml')
   end
+
   def setup
-   # FileUtils.rm_rf(destination)
     I18n.backend = I18n::Backend::Simple.new
     I18n.backend.reload!
+    I18nAdminUtils::Config.reset
+    I18nAdminUtils::Config.yml_file = filename
   end
 
   test 'should get index' do
@@ -21,8 +23,6 @@ class I18nAdminUtils::TranslationControllerTest < ActionController::TestCase
   end
 
   test 'ajax should add translation with locale and key seperate' do
-    I18nAdminUtils::Config.reset
-    I18nAdminUtils::Config.yml_file = filename
     locale = 'en'
     key = 'testkey.testsubkey'
     value = 'Super value!'
@@ -30,5 +30,20 @@ class I18nAdminUtils::TranslationControllerTest < ActionController::TestCase
     assert JSON.parse(@response.body)['success'], "Response should be 'success' but is #{@response.body}"
     assert I18n.t(key, :locale => locale) == value, 'Translation should have been added'
   end
+
+  test 'ajax should add translation with locale and key joined' do
+    locale = 'en'
+    key = 'testkey.localandkeytogether'
+    value = 'Super value!'
+    xhr :get, :edit, :key => "#{locale}.#{key}", :value => value
+    assert JSON.parse(@response.body)['success'], "Response should be 'success' but is #{@response.body}"
+    assert I18n.t(key, :locale => locale) == value, 'Translation should have been added'
+  end
+
+  test 'should get missing list' do
+    get :missing_list
+    assert_response :success
+  end
+
 
 end
