@@ -19,3 +19,9 @@ if ActiveSupport::TestCase.method_defined?(:fixture_path=)
 end
 
 require 'rails/generators/test_case'
+
+class ActiveSupport::TestCase
+  def reload_i18n_path
+    I18n.load_path += Dir[Rails.root.join(File.expand_path('../../tmp/yml', __FILE__), '*.{rb,yml}').to_s]
+  end
+end

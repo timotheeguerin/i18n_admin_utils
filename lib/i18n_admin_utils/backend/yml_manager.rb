@@ -34,8 +34,10 @@ module I18nAdminUtils
         unless File.directory?(dir)
           FileUtils.mkdir_p(dir)
         end
-
-        File.new(filename, 'w') unless File.exist?(filename)
+        unless File.exists?(filename)
+          File.new(filename, 'w')
+          I18n.load_path += Dir[Rails.root.join(dir, '*.{rb,yml}').to_s] #Reindex files
+        end
       end
     end
   end

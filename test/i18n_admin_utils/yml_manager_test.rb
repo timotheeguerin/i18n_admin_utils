@@ -10,6 +10,7 @@ module I18nAdminUtils
     end
 
     def setup
+
     end
 
     test 'File should be created' do

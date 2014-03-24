@@ -16,7 +16,7 @@ module I18nAdminUtils
             locale = split[0]
             key = split[1]
           else
-            i18n_redirect('No locale specified')
+            i18n_redirect('No locale specified', false)
             return
           end
         end
