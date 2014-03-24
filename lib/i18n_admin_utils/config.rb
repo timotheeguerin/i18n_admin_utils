@@ -28,8 +28,26 @@ module I18nAdminUtils
         end
       end
 
+      def backend=(value)
+        @backend = value.to_s
+      end
 
-      #Set the default values
+      def backend
+        if @backend.nil? or @backend.blank?
+          i18n_backend = I18n.backend.class.to_s
+          if i18n_backend == 'I18n::Backend::Chain' #If the backend is a chain but no backend was specified then we take the first one
+            i18n_backend = I18n.backend.backends.first.class.to_s
+          end
+          if i18n_backend == 'I18n::Backend::ActiveRecord'
+            @backend = 'I18n::Backend::ActiveRecord'
+          elsif i18n_backend == 'I18n::Backend::Simple'
+            @backend = 'I18n::Backend::Simple'
+          else
+            raise Exception, "I18nAdminUtils, backend #{i18n_backend} not supported!"
+          end
+        end
+        @backend
+      end
     end
     reset
   end

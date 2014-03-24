@@ -20,6 +20,8 @@ module I18nAdminUtils
     end
 
     test 'Translation should be added' do
+      I18n.backend = I18n::Backend::Simple.new
+      I18n.backend.reload!
       I18n.load_path += Dir[Rails.root.join(destination, '*.{rb,yml}').to_s]
       I18nAdminUtils::Config.yml_file = filename
       key = 'test.dumb.blabl'

@@ -1,5 +1,9 @@
 I18nAdminUtils.config do |config|
 
+  #Specify the backend if you are using the chain(it will use the first one by default)
+  #config.backend = I18n::Backend::Simple
+  #config.backend = I18n::Backend::ActiveRecord
+
   #Model that contains the translation must have locale, key and value columns
   config.translation_model = Translation
 

@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/timcolonel/i18n-active_record.git
+  revision: 3cc1e5d43053dfe9dc0d8747304b80f038c6b032
+  specs:
+    i18n-active_record (0.0.3)
+      i18n (>= 0.5.0)
+
 PATH
   remote: .
   specs:
@@ -49,8 +56,6 @@ GEM
     erubis (2.7.0)
     hike (1.2.3)
     i18n (0.6.9)
-    i18n-active_record (0.0.2)
-      i18n (>= 0.5.0)
     json (1.8.1)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -111,5 +116,6 @@ PLATFORMS
 
 DEPENDENCIES
   coveralls
+  i18n-active_record!
   i18n_admin_utils!
   sqlite3

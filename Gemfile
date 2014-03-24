@@ -13,3 +13,5 @@ gemspec
 # To use debugger
 # gem 'debugger'
 gem 'coveralls', require: false
+
+gem 'i18n-active_record', :github => 'timcolonel/i18n-active_record', :require => 'i18n/active_record'
