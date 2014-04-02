@@ -32,4 +32,5 @@ window.load_script_on = (container) ->
   container.find("[rel=tooltip]").tooltip({ container: 'body', animation: false, delay: 0});
   container.find("[rel=popover]").popover({ container: 'body', animation: false, delay: 0, trigger: 'hover'});
   container.find('[data-toggle="modal"]').modal('hide')
+  window.load_rails_embed_code_editor() #Reload editors
 

@@ -23,15 +23,17 @@ module I18nAdminUtils
     end
 
     def self.check_results(results)
-      missing = []
-      results.each do |key|
+      output = SearchResult.new
+      results.each do |result|
+        key = result[:key]
         I18nAdminUtils::Config.locales.each do |locale|
           if  I18n.t(key, :locale => locale, :default => 'empty') == 'empty'
-            missing << {:locale => locale, :key => key}
+            result[:locale] = locale
+            output << result
           end
         end
       end
-      missing
+      output
     end
 
     def self.find_plain_text

@@ -5,7 +5,10 @@
   <title><%= content_for?(:title) ? yield(:title) : 'I18n Admin Utils' %></title>
   <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Rails Bootstrap" %>">
   <%= stylesheet_link_tag 'i18n_admin_utils/application', :media => 'all' %>
-  <%= javascript_include_tag 'i18n_admin_utils/application', 'data-turbolinks-track' => true%>
+  <%= javascript_include_tag 'i18n_admin_utils/application', 'data-turbolinks-track' => true %>
+
+  <%= javascript_include_tag 'rails_embed_editor/application' %>
+  <%= stylesheet_link_tag 'rails_embed_editor/application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>

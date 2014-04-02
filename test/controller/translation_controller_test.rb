@@ -13,8 +13,10 @@ class I18nAdminUtils::TranslationControllerTest < ActionController::TestCase
   def setup
     I18n.backend = I18n::Backend::Simple.new
     I18n.backend.reload!
+
     I18nAdminUtils::Config.reset
     I18nAdminUtils::Config.yml_file = filename
+    I18nAdminUtils::Config.search_folders =[File.expand_path('../../tmp/translation_use', __FILE__)]
   end
 
   test 'should get index' do

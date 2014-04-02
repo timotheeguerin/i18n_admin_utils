@@ -1,4 +1,5 @@
 require 'bootstrap-sass' unless defined? Bootstrap
+require 'rails_embed_editor' unless defined? RailsEmbedEditor
 
 require 'i18n_admin_utils/engine'
 require 'i18n_admin_utils/config'

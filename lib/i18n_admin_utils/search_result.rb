@@ -34,8 +34,12 @@ module I18nAdminUtils
       @results.each(&block)
     end
 
+    def delete(element)
+      @results.delete(element)
+    end
+
     def to_s
-      @results.values.to_s
+      @results.to_s
     end
   end
 end

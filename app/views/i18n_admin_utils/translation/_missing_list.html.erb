@@ -67,7 +67,9 @@
                 </div>
               </div>
           <% end %>
-          <%= rails_embed_editor('', :line => 5, :radius => 2, :editormode => RailsEmbedEditor::EditorMode::READ_WRITE) %>
+          <div>
+            <%= rails_embed_editor(translation[:filename], :line => 5, :radius => 2, :editormode => RailsEmbedEditor::EditorMode::READ_WRITE) %>
+          </div>
         </div>
     <% end %>
 
