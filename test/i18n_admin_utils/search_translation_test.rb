@@ -37,17 +37,17 @@ class SearchTranslationTest < ActiveSupport::TestCase
     assert @translations.size == results.size, "Found different amount of translation: #{results.size} instead of #{@translations.size}"
 
     @translations.each do |translation|
-      assert results.include?(translation), "Error translation #{translation} not found"
+      assert results.include_key?(translation), "Error translation #{translation} not found"
     end
   end
 
 
   test 'Find all the plain text' do
     results = I18nAdminUtils::SearchTranslation.find_plain_text
-    assert @plain_text.size == results.total_found, "Found different amount of translation: #{results.total_found} instead of #{@plain_text.size}"
+    assert @plain_text.size == results.size, "Found different amount of translation: #{results.size} instead of #{@plain_text.size}"
 
     @plain_text.each do |text|
-      assert results.include?(text), "Error plain text #{text} not found"
+      assert results.include_key?(text), "Error plain text #{text} not found"
     end
   end
 end

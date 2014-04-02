@@ -1,7 +1,7 @@
 module I18nAdminUtils
   class SearchTranslation
     #Regex that match plain text in html
-    HTML_PLAIN_TEXT_REGEX =  /(?<=>)(([^><])+)(?=<)/
+    HTML_PLAIN_TEXT_REGEX = /(?<=>)(([^><])+)(?=<)/
 
     def self.search
       results = find_translation
@@ -9,13 +9,13 @@ module I18nAdminUtils
     end
 
     def self.find_translation
-      results = []
+      results = SearchResult.new
       dirs = I18nAdminUtils::Config.search_folders
       dirs.each do |dir|
         Dir.glob("#{dir}/**/*.*").each do |filename|
           File.open(filename).read.scan(/t\(("(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*')\)/).each do |result|
             key = result[0][1...-1]
-            results << key
+            results << {:key => key, :filename => filename}
           end
         end
       end
@@ -24,9 +24,9 @@ module I18nAdminUtils
 
     def self.check_results(results)
       missing = []
-      results.each do |result|
+      results.each do |key|
         I18nAdminUtils::Config.locales.each do |locale|
-          if  I18n.t(result, :locale => locale, :default => 'empty') == 'empty'
+          if  I18n.t(key, :locale => locale, :default => 'empty') == 'empty'
             missing << {:locale => locale, :key => result}
           end
         end
@@ -39,18 +39,18 @@ module I18nAdminUtils
       dirs = I18nAdminUtils::Config.search_folders
       dirs.each do |dir|
         Dir.glob("#{dir}/**/*.*").each do |filename|
-          results[filename] = find_plain_text_in_file(filename)
+          results += find_plain_text_in_file(filename)
         end
       end
       results
     end
 
     def self.find_plain_text_in_file(filename)
-      list = []
+      results = SearchResult.new
       File.open(filename).read.scan(HTML_PLAIN_TEXT_REGEX).each do |result|
-        list << result[0] unless result[0].blank?
+        results << {:key => result[0], :filename => filename} unless result[0].blank?
       end
-      list
+      results
     end
   end
 end

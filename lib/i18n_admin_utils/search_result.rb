@@ -2,25 +2,38 @@ module I18nAdminUtils
   class SearchResult
     attr_accessor :results
 
-    def initialize(hash = {})
-      @results = hash
+    def initialize(array= [])
+      @results = array
     end
 
-    def total_found
-      @results.values.map{|x| x.size}.inject { |sum, x| sum + x }
+    def size
+      @results.size
     end
 
-    def [](key)
-      @results[key]
+    def [](i)
+      @results[i]
     end
 
-    def []=(key, value)
-      @results[key]= value
+    def []=(i, hash)
+      @results[i]= hash
     end
 
-    def include?(str)
-      @results.values.flatten.include?(str)
+    def <<(hash)
+      @results << hash
     end
+
+    def +(other)
+      SearchResult.new(@results + other.results)
+    end
+
+    def include_key?(key)
+      @results.any? { |h| h[:key] == key }
+    end
+
+    def each(&block)
+      @results.each(&block)
+    end
+
     def to_s
       @results.values.to_s
     end
