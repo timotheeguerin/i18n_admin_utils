@@ -27,7 +27,7 @@ module I18nAdminUtils
       results.each do |key|
         I18nAdminUtils::Config.locales.each do |locale|
           if  I18n.t(key, :locale => locale, :default => 'empty') == 'empty'
-            missing << {:locale => locale, :key => result}
+            missing << {:locale => locale, :key => key}
           end
         end
       end
