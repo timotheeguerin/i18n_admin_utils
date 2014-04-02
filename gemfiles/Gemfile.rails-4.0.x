@@ -15,3 +15,5 @@ gem 'turbolinks'
 gem 'coveralls', '>= 0', require: false
 
 gem 'i18n-active_record', :github => 'timcolonel/i18n-active_record', :require => 'i18n/active_record'
+
+gem gem 'sass-rails', '~> 4.0.2'
