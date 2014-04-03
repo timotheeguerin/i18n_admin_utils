@@ -20,55 +20,64 @@
       </div>
     </div>
     <% translation.each do |translation| %>
+        <% editor_id = SecureRandom.uuid %>
+
         <div class='row' data-locale='<%= translation[:locale] %>' data-key='<%= translation[:key] %>'>
-          <%= form_tag translation_edit_path, :class => 'translation_helper' do %>
-              <div class='col-md-1'>
-                <%= translation[:locale] %>
-              </div>
-              <div class='col-md-2'>
-                <%= translation[:key] %>
-              </div>
-              <%= hidden_field_tag :locale, translation[:locale] %>
-              <%= hidden_field_tag :key, translation[:key] %>
-              <div class='col-md-8'>
-                <div class='input-group'>
-                  <%= text_field_tag :value, '', :class => 'form-control', 'data-update' => 'value_ta' %>
-                  <% id = "#{translation[:locale]}_#{translation[:key]}".gsub(/\./, '_') %>
-                  <span class="input-group-btn">
-                      <button class='btn btn-default nosubmit' title='Click to open larger edit box' rel='tooltip' data-toggle="modal" data-target="#<%= id %>">
+          <div>
+            <%= form_tag translation_edit_path, :class => 'translation_helper' do %>
+                <div class='col-md-1'>
+                  <%= translation[:locale] %>
+                </div>
+                <div class='col-md-2'>
+                  <button class='btn btn-success btn-xs nosubmit toogle-container' title='Click to view location' data-container="#<%= editor_id %>">
+                    <span class='glyphicon glyphicon-search '></span>
+                  </button>
+                  <%= translation[:key] %>
+                </div>
+                <%= hidden_field_tag :locale, translation[:locale] %>
+                <%= hidden_field_tag :key, translation[:key] %>
+                <div class='col-md-9'>
+                  <div class='input-group'>
+                    <% modal_id = SecureRandom.uuid %>
+                    <span class="input-group-btn">
+                      <button class='btn btn-default nosubmit' title='Click to open larger edit box' rel='tooltip' data-toggle="modal" data-target="#<%= modal_id %>">
                         <span class='glyphicon glyphicon-edit'></span>
                       </button>
                   </span>
-                </div>
-                <div>
-                  <div class="modal fade" id="<%= id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                          <h4 class="modal-title" id="myModalLabel">Input translation</h4>
-                        </div>
-                        <div class="modal-body">
-                          <%= text_area_tag :value_ta, '', :class => 'form-control', 'data-update' => 'value' %>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default nosubmit" data-dismiss="modal">Ok</button>
+                    <%= text_field_tag :value, '', :class => 'form-control', 'data-update' => 'value_ta' %>
+                    <span class="input-group-btn">
+                      <button class='btn btn-primary'>
+                        Add
+                      </button>
+                  </span>
+                  </div>
+                  <div>
+                    <div class="modal fade" id="<%= modal_id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Input translation</h4>
+                          </div>
+                          <div class="modal-body">
+                            <%= text_area_tag :value_ta, '', :class => 'form-control', 'data-update' => 'value' %>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default nosubmit" data-dismiss="modal">Ok</button>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class='col-md-1'>
-                <div class='pull-right'>
-                  <button class='btn btn-primary'>
-                    Add
-                  </button>
-                </div>
-              </div>
-          <% end %>
+            <% end %>
+          </div>
           <div>
-            <%= rails_embed_editor(translation[:filename], :line => 5, :radius => 2, :editormode => RailsEmbedEditor::EditorMode::READ_WRITE) %>
+            <div id='<%= editor_id %>' style="display: none" class="editor_container">
+              <div>
+                <%= rails_embed_editor(translation[:filename], :line => 5, :radius => 2, :editormode => RailsEmbedEditor::EditorMode::READ_WRITE) %>
+              </div>
+            </div>
           </div>
         </div>
     <% end %>

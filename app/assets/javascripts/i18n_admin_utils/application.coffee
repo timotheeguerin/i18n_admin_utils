@@ -27,10 +27,20 @@ $(document).ready ()->
     console.log(form)
     form.find('input[name="' + input.data('update') + '"], textarea[name="' + input.data('update') + '"]').val(input.val())
 
+  $(document).on 'click', '.toogle-container', () ->
+    console.log('adawoidhoih')
+    container = $($(this).data('container'))
+    console.log(container)
+    if container.is(':visible')
+      container.slideUp()
+    else
+      container.slideDown()
+
 #Rerun this command for reloading script for new element added with ajax for example
 window.load_script_on = (container) ->
   container.find("[rel=tooltip]").tooltip({ container: 'body', animation: false, delay: 0});
   container.find("[rel=popover]").popover({ container: 'body', animation: false, delay: 0, trigger: 'hover'});
   container.find('[data-toggle="modal"]').modal('hide')
   window.load_rails_embed_code_editor() #Reload editors
+
 
