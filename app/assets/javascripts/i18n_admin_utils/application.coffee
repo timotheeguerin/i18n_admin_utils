@@ -19,7 +19,6 @@
 $(document).ready () ->
   window.load_script_on($(this))
   $(document).on 'click', 'form input.nosubmit, form button.nosubmit', (e) ->
-    console.log('cloick')
     e.preventDefault();
 
   $(document).on 'keyup', 'input[data-update], textarea[data-update]', () ->
