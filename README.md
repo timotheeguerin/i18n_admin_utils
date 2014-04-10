@@ -57,7 +57,7 @@ To spot those translation you can add the class `.translation_missing` to your c
 ```
 
 ### List of all untranslated key in app 
-Search the entire project for the use of the t('') method. All the untranslated key without a translation will be displayed. By clicking on the `search` icon you can see where you are using this translation in your code(And also live editing the file(![Rails embed editor](https://github.com/timcolonel/rails_embed_editor)).
+Search the entire project for the use of the t('') method. All the untranslated key without a translation will be displayed. By clicking on the `search` icon you can see where you are using this translation in your code(And also live editing the file([Rails embed editor](https://github.com/timcolonel/rails_embed_editor)).
 
 ![capture](https://cloud.githubusercontent.com/assets/1031227/2673754/3027d198-c0f7-11e3-8438-a78f48c935d4.PNG)
 
