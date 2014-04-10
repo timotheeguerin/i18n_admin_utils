@@ -13,10 +13,15 @@ module I18nAdminUtils
       dirs = I18nAdminUtils::Config.search_folders
       dirs.each do |dir|
         Dir.glob("#{dir}/**/*.*").each do |filename|
-          File.open(filename).read.scan(/t\(("(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*')\)/).each do |result|
-            key = result[0][1...-1]
-            results << {:key => key, :filename => filename}
+          i = 1
+          File.open(filename).each_line do |line|
+            line.scan(/t\(("(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*')\)/).each do |result|
+              key = result[0][1...-1]
+              results << {:key => key, :filename => filename, :line => i}
+            end
+            i += 1
           end
+
         end
       end
       results

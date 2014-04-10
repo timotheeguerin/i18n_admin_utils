@@ -16,25 +16,25 @@
 #= require_tree .
 #= require bootstrap
 
-$(document).ready ()->
+$(document).ready () ->
+  console.log('evbena[wd')
   window.load_script_on($(this))
+  console.log('bullshit')
   $(document).on 'click', 'form input.nosubmit, form button.nosubmit', (e) ->
+    console.log('cloick')
     e.preventDefault();
 
   $(document).on 'keyup', 'input[data-update], textarea[data-update]', () ->
     input = $(this)
     form = input.closest('form')
-    console.log(form)
     form.find('input[name="' + input.data('update') + '"], textarea[name="' + input.data('update') + '"]').val(input.val())
 
   $(document).on 'click', '.toogle-container', () ->
-    console.log('adawoidhoih')
     container = $($(this).data('container'))
-    console.log(container)
     if container.is(':visible')
-      container.slideUp()
+      container.hide()
     else
-      container.slideDown()
+      container.show()
 
 #Rerun this command for reloading script for new element added with ajax for example
 window.load_script_on = (container) ->
