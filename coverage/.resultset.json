@@ -292,11 +292,11 @@
         4,
         null,
         4,
-        1,
+        0,
         null,
         4,
-        2,
-        2,
+        1,
+        1,
         null,
         null,
         null,
@@ -516,6 +516,7 @@
         null
       ],
       "C:/dev/ws/ruby/i18n_admin_utils/app/controllers/i18n_admin_utils/application_controller.rb": [
+        1,
         1,
         1,
         1,
@@ -757,6 +758,6 @@
         null
       ]
     },
-    "timestamp": 1396495199
+    "timestamp": 1397164254
   }
 }

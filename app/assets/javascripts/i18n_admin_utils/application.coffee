@@ -17,9 +17,7 @@
 #= require bootstrap
 
 $(document).ready () ->
-  console.log('evbena[wd')
   window.load_script_on($(this))
-  console.log('bullshit')
   $(document).on 'click', 'form input.nosubmit, form button.nosubmit', (e) ->
     console.log('cloick')
     e.preventDefault();

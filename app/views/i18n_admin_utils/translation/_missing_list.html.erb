@@ -75,7 +75,9 @@
           <div>
             <div id='<%= editor_id %>' style="display: none" class="editor_container">
               <div>
-                <%= rails_embed_editor(translation[:filename], :line => translation[:line], :radius => 2, :editormode => RailsEmbedEditor::EditorMode::READ_WRITE) %>
+                <%= rails_embed_editor(translation[:filename], :line => translation[:line], :radius => 2,
+                                       :editormode => RailsEmbedEditor::EditorMode::READ_WRITE,
+                                       :highlight => translation[:line]) %>
               </div>
             </div>
           </div>
