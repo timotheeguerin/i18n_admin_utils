@@ -12,6 +12,10 @@
  *= require_tree .
  *= require bootstrap
  */
+html, body, .wrapper {
+  height: 100%;
+  min-height: 100%;
+}
 
 body {
   padding-top: 70px;
@@ -19,9 +23,7 @@ body {
 
 .translation_missing_container .row {
   padding: 1rem 0;
-  &:not(:last-child) {
-    border-bottom: 1px solid #e5e5e5;
-  }
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .editor_container {
@@ -35,25 +37,39 @@ body {
 $light_grey: #d5d5d5;
 $lighter_grey: #e5e5e5;
 $lightest_grey: #f5f5f5;
+$white_grey: #fcfcfc;
 
-$border-color: $light_grey;
+$border-color: $lightest_grey;
 div.translation_container {
   border-top: 1px solid $border-color;
+  height: 100%;
   div.translation_list {
     border-right: 1px solid $border-color;
     padding-right: 0;
-    div.translation_item {
-      height: 5rem;
+    height: 100%;
+    div.translation_filter {
       padding: 1rem;
+      background-color: $white_grey;
+
+      input[type="text"] {
+      }
+    }
+    div.translation_item {
+      padding: 2rem;
       cursor: pointer;
       &.active {
         background-color: #4183C4;
       }
+      &:nth-child(even) {
+        background-color: $white_grey;
+      }
       &:hover:not(.active) {
         background-color: $lighter_grey;
       }
-      &:not(:first-child) {
-        border-top: 1px solid $border-color;
+
+      border-top: 1px solid $border-color;
+      &:last-child {
+        border-bottom: 1px solid $border-color;
       }
 
       .translation_filename {
@@ -61,10 +77,11 @@ div.translation_container {
         overflow: hidden;
         text-overflow: ellipsis;
         unicode-bidi: bidi-override;
+        font-style: italic;
       }
 
       &.active {
-        background-color: rgb(65, 131, 196);
+        background-color: #6B9ED1;
         color: white;
         position: relative;
 
@@ -81,7 +98,7 @@ div.translation_container {
 
         &:after {
           border-color: rgba(65, 131, 196, 0);
-          border-left-color: #4183C4;
+          border-left-color: #6B9ED1;
           border-width: 10px;
           margin-top: -10px;
         }
