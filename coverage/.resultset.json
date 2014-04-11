@@ -163,7 +163,6 @@
         4,
         4,
         4,
-        4,
         null,
         null,
         null,
@@ -233,7 +232,7 @@
         null,
         null,
         1,
-        1,
+        0,
         null,
         null,
         null
@@ -297,8 +296,8 @@
         1,
         null,
         4,
-        2,
-        2,
+        1,
+        1,
         null,
         null,
         null,
@@ -466,6 +465,7 @@
         1,
         1,
         1,
+        1,
         null
       ],
       "C:/dev/ws/ruby/i18n_admin_utils/app/controllers/i18n_admin_utils/translation_controller.rb": [
@@ -496,8 +496,13 @@
         null,
         null,
         null,
-        null,
         1,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
         1,
         1,
         1,
@@ -760,6 +765,6 @@
         null
       ]
     },
-    "timestamp": 1397243797
+    "timestamp": 1397248160
   }
 }

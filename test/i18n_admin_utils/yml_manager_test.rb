@@ -6,7 +6,7 @@ module I18nAdminUtils
     end
 
     def filename
-      File.join(destination, 'test_tml')
+      File.join(destination, 'test_yml')
     end
 
     def setup
@@ -22,8 +22,8 @@ module I18nAdminUtils
 
     test 'Translation should be added' do
       I18n.backend = I18n::Backend::Simple.new
+      I18n.load_path = Dir[Rails.root.join(destination, '*.{rb,yml}').to_s]
       I18n.backend.reload!
-      I18n.load_path += Dir[Rails.root.join(destination, '*.{rb,yml}').to_s]
       I18nAdminUtils::Config.yml_file = filename
       key = 'test.dumb.blabl'
       locale = 'en'

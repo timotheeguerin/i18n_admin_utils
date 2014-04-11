@@ -17,3 +17,5 @@ gem 'coveralls', '>= 0', require: false
 gem 'i18n-active_record', :github => 'timcolonel/i18n-active_record', :require => 'i18n/active_record'
 
 gem 'sass-rails', '~> 4.0.2'
+
+gem 'sprockets-rails', :require => 'sprockets/rails/version'

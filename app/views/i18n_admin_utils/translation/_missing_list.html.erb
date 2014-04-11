@@ -1,7 +1,7 @@
 <div class="row translation_container">
-  <div class="col-md-3 translation_list">
-    <% translation.each do |translation| %>
-        <div class="translation_item">
+  <div class="col-md-3 translation_list" data-url='<%= translation_missing_show_path %>' data-container='#translation_edit_container'>
+    <% translations.each do |translation| %>
+        <div class="translation_item" data-translation='<%= translation.to_json %>'>
           <div class="row">
             <div class="col-md-1">
               <%= translation[:locale] %>
@@ -11,12 +11,15 @@
             </div>
             <div class="col-md-6 ">
               <div class="translation_filename">
-                    <%= translation[:filename].reverse %>
+                <%= translation[:filename].reverse %>
               </div>
             </div>
           </div>
         </div>
     <% end %>
+  </div>
+  <div id='translation_edit_container' class="col-md-9">
+
   </div>
 </div>
 

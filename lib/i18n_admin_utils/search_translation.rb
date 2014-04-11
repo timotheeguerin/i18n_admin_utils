@@ -32,7 +32,6 @@ module I18nAdminUtils
       results.each do |result|
         key = result[:key]
         I18nAdminUtils::Config.locales.each do |locale|
-          puts locale + ' -- ' + I18n.t(key, :locale => locale, :default => 'empty')
           if  I18n.t(key, :locale => locale, :default => 'empty') == 'empty'
             copy_result = result.clone
             copy_result[:locale] = locale

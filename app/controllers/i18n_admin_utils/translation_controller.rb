@@ -25,11 +25,16 @@ module I18nAdminUtils
       end
     end
 
+    def show
+      unless params[:translation].nil?
+        render :partial => 'show', :locals => {:translation => params[:translation]}
+      end
+    end
+
     #Return a list of all the missing translation
     def missing_list
-      translation = I18nAdminUtils::SearchTranslation.search
-      puts translation
-      render :partial => 'missing_list', :layouts => false, :locals=> {:translation => translation}
+      translations = I18nAdminUtils::SearchTranslation.search
+      render :partial => 'missing_list', :layouts => false, :locals => {:translations => translations}
     end
 
     def i18n_redirect(message, success = true)

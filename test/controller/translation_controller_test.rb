@@ -12,7 +12,9 @@ class I18nAdminUtils::TranslationControllerTest < ActionController::TestCase
 
   def setup
     I18n.backend = I18n::Backend::Simple.new
+    I18n.load_path = Dir[Rails.root.join(destination, '*.{rb,yml}').to_s]
     I18n.backend.reload!
+
 
     I18nAdminUtils::Config.reset
     I18nAdminUtils::Config.yml_file = filename
@@ -43,6 +45,7 @@ class I18nAdminUtils::TranslationControllerTest < ActionController::TestCase
   end
 
   test 'should get missing list' do
+    I18n.backend.reload!
     get :missing_list
     assert_response :success
   end
