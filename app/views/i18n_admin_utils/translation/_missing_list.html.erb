@@ -1,5 +1,8 @@
 <% translations.each do |translation| %>
-    <div class="translation_item" data-translation='<%= translation.to_json %>'>
+    <div class="translation_item" data-translation='<%= translation.to_json %>'
+         data-locale='<%= translation[:locale] %>'
+         data-key='<%= translation[:key] %>'
+         data-filename='<%= translation[:filename] %>'>
       <div class="row">
         <div class="col-md-1">
           <%= translation[:locale] %>

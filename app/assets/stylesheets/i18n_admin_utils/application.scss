@@ -50,7 +50,7 @@ div.translation_container {
     div.translation_filter {
       padding: 1rem;
       background-color: $white_grey;
-
+      border-bottom: 1px solid $border-color;
       input[type="text"] {
       }
     }
@@ -67,10 +67,7 @@ div.translation_container {
         background-color: $lighter_grey;
       }
 
-      border-top: 1px solid $border-color;
-      &:last-child {
-        border-bottom: 1px solid $border-color;
-      }
+      border-bottom: 1px solid $border-color;
 
       .translation_filename {
         direction: rtl;

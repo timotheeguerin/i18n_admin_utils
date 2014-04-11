@@ -33,6 +33,20 @@ $(document).ready () ->
     else
       container.show()
 
+  $(document).on 'keyup', 'input.translation_search', () ->
+    input = $(this)
+    val = input.val()
+
+
+    container = input.closest '.translation_container'
+    elements = container.find('.translation_list .translation_item')
+    if val.length == 0
+      show_translation_element(elements)
+    else
+      query = '[data-locale*="' + val + '"],[data-key*="' + val + '"], [data-filename*="' + val + '"]'
+      show_translation_element(elements.filter(query))
+      hide_translation_element(elements.not(query))
+
   $(document).on 'click', '.translation_list .translation_item', () ->
     item = $(this)
     list = item.closest('.translation_list')
@@ -55,3 +69,14 @@ window.load_script_on = (container) ->
   window.load_rails_embed_code_editor() #Reload editors
 
 
+show_translation_element = (elements) ->
+  elements.each () ->
+    element = $(this)
+    if not element.is ':visible'
+      element.slideDown(200)
+
+hide_translation_element = (elements) ->
+  elements.each () ->
+    element = $(this)
+    if  element.is ':visible'
+      element.slideUp(200)
