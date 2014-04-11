@@ -43,7 +43,8 @@ div.translation_container {
     border-right: 1px solid $border-color;
     padding-right: 0;
     div.translation_item {
-      height: 50px;
+      height: 5rem;
+      padding: 1rem;
       &.active {
         background-color: rgb(65, 131, 196);
       }
@@ -54,11 +55,17 @@ div.translation_container {
         border-top: 1px solid $border-color;
       }
 
-      div.translation_filename {
+      .translation_filename {
+        direction: rtl;
         overflow: hidden;
+        white-space: nowrap;
         text-overflow: ellipsis;
-        text-align: right;
-        direction: ltr;
+        unicode-bidi: bidi-override;
+      }
+
+      &.active {
+        background-color: rgb(65, 131, 196);
+        color: white;
       }
     }
   }

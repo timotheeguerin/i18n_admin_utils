@@ -33,6 +33,15 @@ $(document).ready () ->
     else
       container.show()
 
+  $(document).on 'click', '.translation_list .translation_item', () ->
+    console.log('click')
+    item = $(this)
+
+    item.closest('.translation_list').find('.translation_item.active').each () ->
+      $(this).removeClass('active')
+    item.addClass('active')
+
+
 #Rerun this command for reloading script for new element added with ajax for example
 window.load_script_on = (container) ->
   container.find("[rel=tooltip]").tooltip({ container: 'body', animation: false, delay: 0});
