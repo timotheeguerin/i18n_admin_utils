@@ -45,8 +45,9 @@ div.translation_container {
     div.translation_item {
       height: 5rem;
       padding: 1rem;
+      cursor: pointer;
       &.active {
-        background-color: rgb(65, 131, 196);
+        background-color: #4183C4;
       }
       &:hover:not(.active) {
         background-color: $lighter_grey;
@@ -58,7 +59,6 @@ div.translation_container {
       .translation_filename {
         direction: rtl;
         overflow: hidden;
-        white-space: nowrap;
         text-overflow: ellipsis;
         unicode-bidi: bidi-override;
       }
@@ -66,6 +66,31 @@ div.translation_container {
       &.active {
         background-color: rgb(65, 131, 196);
         color: white;
+        position: relative;
+
+        &:after, &:before {
+          left: 100%;
+          top: 50%;
+          border: solid transparent;
+          content: " ";
+          height: 0;
+          width: 0;
+          position: absolute;
+          pointer-events: none;
+        }
+
+        &:after {
+          border-color: rgba(65, 131, 196, 0);
+          border-left-color: #4183C4;
+          border-width: 10px;
+          margin-top: -10px;
+        }
+        &:before {
+          border-color: rgba(65, 131, 196, 0);
+          border-left-color: $border-color;
+          border-width: 11px;
+          margin-top: -11px;
+        }
       }
     }
   }
