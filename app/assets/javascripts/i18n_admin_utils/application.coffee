@@ -43,7 +43,10 @@ $(document).ready () ->
     $.get(list.data('url'), {
       translation: item.data('translation')
     }).success (data) ->
-      $(list.data('container')).html(data)
+      container = $(list.data('container'))
+      container.html(data)
+      window.load_script_on(container)
+
 #Rerun this command for reloading script for new element added with ajax for example
 window.load_script_on = (container) ->
   container.find("[rel=tooltip]").tooltip({ container: 'body', animation: false, delay: 0});

@@ -1,3 +1,29 @@
-<div>
-  <h2><%= translation[:locale] %> <%= translation[:key] %></h2>
+<div class="row">
+  <div class="col-md-11">
+    <div>
+      <h2><%= translation[:locale] %> <%= translation[:key] %></h2>
+    </div>
+    <div>
+      <%= form_tag translation_edit_path, :class => 'translation_helper' do %>
+
+          <%= hidden_field_tag :locale, translation[:locale] %>
+          <%= hidden_field_tag :key, translation[:key] %>
+          <%= text_field_tag :value, '', :class => 'form-control', 'data-update' => 'value_ta' %>
+          <button class='btn btn-primary pull-right'>
+            Add
+          </button>
+      <% end %>
+    </div>
+
+    <div class="editor_container">
+      <div>
+        <b><%= translation[:filename] %></b>
+      </div>
+      <div>
+        <%= rails_embed_editor(translation[:filename], :line => translation[:line], :radius => 4,
+                               :editormode => RailsEmbedEditor::EditorMode::READ_WRITE,
+                               :highlight => translation[:line]) %>
+      </div>
+    </div>
+  </div>
 </div>
