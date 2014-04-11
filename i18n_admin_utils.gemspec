@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'i18n-active_record', '>= 0'
   s.add_dependency 'jquery-rails', '>= 0'
   s.add_dependency 'turbolinks', '>=0'
-  s.add_dependency 'sass-rails', '~> 4.0.2'
+  s.add_dependency 'sass-rails', '>=3.2'
   s.add_dependency 'bootstrap-sass', '~> 3.1.1', '~> 3.1.0'
   s.add_dependency 'rails_embed_editor', '>= 1.0.0'
   s.add_development_dependency 'sqlite3', '>= 0'

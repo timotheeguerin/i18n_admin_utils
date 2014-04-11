@@ -15,7 +15,7 @@ PATH
       json
       rails (~> 4.0, >= 4.0.0)
       rails_embed_editor (>= 1.0.0)
-      sass-rails (~> 4.0.2)
+      sass-rails (>= 3.2)
       turbolinks
 
 GEM

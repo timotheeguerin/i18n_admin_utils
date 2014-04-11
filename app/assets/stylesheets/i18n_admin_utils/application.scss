@@ -31,3 +31,35 @@ body {
     overflow: hidden;
   }
 }
+
+$light_grey: #d5d5d5;
+$lighter_grey: #e5e5e5;
+$lightest_grey: #f5f5f5;
+
+$border-color: $light_grey;
+div.translation_container {
+  border-top: 1px solid $border-color;
+  div.translation_list {
+    border-right: 1px solid $border-color;
+    padding-right: 0;
+    div.translation_item {
+      height: 50px;
+      &.active {
+        background-color: rgb(65, 131, 196);
+      }
+      &:hover:not(.active) {
+        background-color: $lighter_grey;
+      }
+      &:not(:first-child) {
+        border-top: 1px solid $border-color;
+      }
+
+      div.translation_filename {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        text-align: right;
+        direction: ltr;
+      }
+    }
+  }
+}
