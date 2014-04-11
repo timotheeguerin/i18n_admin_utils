@@ -9,9 +9,12 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
  *= require bootstrap
+ *= require_tree .
  */
+
+@import 'variables';
+
 html, body, .wrapper {
   height: 100%;
   min-height: 100%;
@@ -27,25 +30,21 @@ body {
 }
 
 .editor_container {
-  margin-top: 5rem;
-  margin-bottom: 2rem;
   .ace_editor {
     overflow: hidden;
   }
 }
 
-$light_grey: #d5d5d5;
-$lighter_grey: #e5e5e5;
-$lightest_grey: #f5f5f5;
-$white_grey: #fcfcfc;
 
 $border-color: $lightest_grey;
 div.translation_container {
   border-top: 1px solid $border-color;
   height: 100%;
+
   div.translation_list {
     border-right: 1px solid $border-color;
     padding-right: 0;
+    padding-left: 0;
     height: 100%;
     div.translation_filter {
       padding: 1rem;
@@ -108,4 +107,9 @@ div.translation_container {
       }
     }
   }
+
+  div.translation_edit_container {
+    padding-top: 5rem;
+  }
 }
+

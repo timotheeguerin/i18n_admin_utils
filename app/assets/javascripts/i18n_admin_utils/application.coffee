@@ -53,11 +53,11 @@ $(document).ready () ->
     list.find('.translation_item.active').each () ->
       $(this).removeClass('active')
     item.addClass('active')
-
+    container = item.closest('.translation_container').find(list.data('container'))
+    container.html($('#loading_icon').html())
     $.get(list.data('url'), {
       translation: item.data('translation')
     }).success (data) ->
-      container = $(list.data('container'))
       container.html(data)
       window.load_script_on(container)
 
