@@ -18,6 +18,15 @@
 
 $(document).ready () ->
   window.load_script_on($(this))
+
+  $('.loadonready').each () ->
+    container = $(this)
+    url = container.data('url')
+    container.html($('#loading_icon').html())
+    $.get(url).success (data) ->
+      container.html(data)
+      window.load_script_on(container)
+
   $(document).on 'click', 'form input.nosubmit, form button.nosubmit', (e) ->
     e.preventDefault();
 
