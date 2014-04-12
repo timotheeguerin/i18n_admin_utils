@@ -1,12 +1,12 @@
 <div class="row">
-  <div class="col-md-2">
-    <b>Locale: <%= translation[:locale] %></b>
+  <div class="col-md-1">
+    <b>Locale:</b> <%= translation[:locale] %>
   </div>
-  <div class="col-md-4">
-    <b>Key: <%= translation[:key] %></b>
+  <div class="col-md-5">
+    <b>Key:</b> <%= translation[:key] %>
   </div>
   <div class="col-md-6">
-    <b><%= translation[:filename] %></b>
+    <i><%= translation[:filename] %></i>
   </div>
 </div>
 <div class="row">
@@ -15,8 +15,8 @@
       <%= form_tag translation_edit_path, :class => 'translation_helper' do %>
           <%= hidden_field_tag :locale, translation[:locale] %>
           <%= hidden_field_tag :key, translation[:key] %>
-          <%= text_area_tag :value, '', :class => 'form-control', 'data-update' => 'value_ta' %>
-          <button class='btn btn-primary pull-right'>
+          <%= text_area_tag :value, '', :class => 'form-control autosize', 'data-update' => 'value_ta', :placeholder => 'Translate here...' %>
+          <button class='btn btn-default'>
             Add
           </button>
       <% end %>
