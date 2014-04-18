@@ -20,7 +20,8 @@ $headerheight: 70px;
 html, body {
   height: 100%;
   .wrapper {
-    height: calc(100vh - #{$headerheight});
+    min-height: calc(100vh - #{$headerheight});
+    height: 100%;
   }
 }
 
@@ -41,17 +42,19 @@ body {
 
 $border-color: $lightest_grey;
 $titleheight: 70px;
+$translation_container_offset: $titleheight+$headerheight;
+
 div.translation_title {
   height: $titleheight;
 }
 div.translation_container {
   border-top: 1px solid $border-color;
-  height: calc(100% - #{$titleheight});
+  min-height: calc(100vh - #{$translation_container_offset});
   div.translation_list {
     border-right: 1px solid $border-color;
     padding-right: 0;
     padding-left: 0;
-    height: 100%;
+    min-height: calc(100vh - #{$translation_container_offset+1});
     div.translation_filter {
       padding: 1rem;
       background-color: $white_grey;
