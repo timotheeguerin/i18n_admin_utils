@@ -16,13 +16,15 @@ Please report bugs and features proposition https://github.com/timcolonel/i18n_a
 
 #Planned features
 
+Main:
 Description | Status
 --- | ---
 On the page(Rendered on the browser) click on a translation missing to display a popover with a form to set the translation | **Functional**, Working on customization
-Retreive all the translation used inside your application and check they have been translated.| **Functional**, Styling in progress
+Retreive all the translation used inside your application and check they have been translated.| **Functional**
 Check all the text you have entered in your application withour using t() | **TODO**
 
-
+Other:
+* Merge duplicate translation into one(display the number of use)
 
 #Installation
 Get the gem in your gemfile 
@@ -59,11 +61,8 @@ To spot those translation you can add the class `.translation_missing` to your c
 ### List of all untranslated key in app 
 Search the entire project for the use of the t('') method. All the untranslated key without a translation will be displayed. By clicking on the `search` icon you can see where you are using this translation in your code(And also live editing the file([Rails embed editor](https://github.com/timcolonel/rails_embed_editor)).
 
-![capture](https://cloud.githubusercontent.com/assets/1031227/2673754/3027d198-c0f7-11e3-8438-a78f48c935d4.PNG)
+![capture](https://cloud.githubusercontent.com/assets/1031227/2743438/50c16b80-c714-11e3-8f63-f7892ff50b19.PNG)
 
-=========
-If your translation require a larger text you can click on the edit icon near the input to display a modal with a textarea
-![capture](https://f.cloud.github.com/assets/1031227/2495539/c917678a-b2f9-11e3-84f3-a6fe9f23492e.PNG)
 
 Go to `/translation` (Loading might be long if your app is large). You should have a list of key to translate(Don't foregt to setup the locales your application use in the config file). The plugin reload the translation after updating one(You can disable it in the config). So reloading this page should update the translation
 
