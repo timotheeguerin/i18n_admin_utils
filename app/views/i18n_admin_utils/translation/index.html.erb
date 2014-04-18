@@ -1,11 +1,13 @@
-<h1>List of untranslated key found in the application</h1>
+<div class="translation_title">
+  <span>List of untranslated key found in the application</span>
+</div>
 
 <div class="row translation_container">
   <div class="col-md-3 translation_list" data-url='<%= translation_missing_show_path %>' data-container='.translation_edit_container'>
     <div class="translation_filter">
       <%= text_field_tag :search, '', :class => 'translation_search form-control', :placeholder => 'Search...', :autocomplete => 'off' %>
     </div>
-    <div class='loadonready' data-url='<%= translation_missing_list_path %>' style="height: 100%">
+    <div class='loadonready' data-url='<%= translation_missing_list_path %>'>
     </div>
   </div>
   <div class='translation_edit_container col-md-9'>
