@@ -17,6 +17,7 @@ Please report bugs and features proposition https://github.com/timcolonel/i18n_a
 #Planned features
 
 Main:
+
 Description | Status
 --- | ---
 On the page(Rendered on the browser) click on a translation missing to display a popover with a form to set the translation | **Functional**, Working on customization
