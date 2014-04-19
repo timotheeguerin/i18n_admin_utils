@@ -26,6 +26,7 @@ Check all the text you have entered in your application withour using t() | **TO
 
 Other:
 * Merge duplicate translation into one(display the number of use)
+* Make account control(Each user can show the list on language he is charged of tranlating)
 
 #Installation
 Get the gem in your gemfile 
