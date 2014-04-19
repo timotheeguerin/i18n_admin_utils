@@ -9,9 +9,7 @@
           <%= translation.key %>
         </div>
         <div class="col-md-6 ">
-          <div class="translation_filename">
-            <%= translation.locations.first[:filename].reverse %>
-          </div>
+          <%= translation_locations_compact_list(translation) %>
         </div>
       </div>
     </div>

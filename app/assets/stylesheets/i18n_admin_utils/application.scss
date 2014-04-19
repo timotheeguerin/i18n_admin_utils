@@ -78,13 +78,7 @@ div.translation_container {
 
       border-bottom: 1px solid $border-color;
 
-      .translation_filename {
-        direction: rtl;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        unicode-bidi: bidi-override;
-        font-style: italic;
-      }
+
 
       &.active {
         background-color: #6B9ED1;
@@ -144,6 +138,15 @@ div.translation_container {
       margin-top: 1rem;
     }
   }
+}
+
+.translation_filename {
+  direction: rtl;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  unicode-bidi: bidi-override;
+  font-style: italic;
+  white-space: nowrap;
 }
 
 .color-range-0 {

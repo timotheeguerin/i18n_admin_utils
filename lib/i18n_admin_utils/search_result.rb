@@ -15,7 +15,7 @@ module I18nAdminUtils
     end
 
     def []=(i, translation)
-      existing = find_by_key(translation)
+      existing = find_by_key(translation.key)
       if existing.nil?
         if i == -1
           @results << translation
