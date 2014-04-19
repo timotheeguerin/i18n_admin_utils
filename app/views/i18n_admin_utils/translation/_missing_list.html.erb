@@ -1,18 +1,17 @@
 <% translations.each do |translation| %>
     <div class="translation_item" data-translation='<%= translation.to_json %>'
-         data-locale='<%= translation[:locale] %>'
-         data-key='<%= translation[:key] %>'
-         data-filename='<%= translation[:filename] %>'>
+         data-key='<%= translation.key %>'>
       <div class="row">
         <div class="col-md-1">
-          <%= translation[:locale] %>
+          <% missing_translation = translation.missing_translations %>
+          <span>(<%= missing_translation.size %>)</span>
         </div>
         <div class="col-md-5">
-          <%= translation[:key] %>
+          <%= translation.key %>
         </div>
         <div class="col-md-6 ">
           <div class="translation_filename">
-            <%= translation[:filename].reverse %>
+            <%= translation.location.first[:filename].reverse %>
           </div>
         </div>
       </div>

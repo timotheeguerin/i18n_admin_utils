@@ -3,7 +3,7 @@ require File.expand_path('../boot', __FILE__)
 require 'rails/all'
 
 Bundler.require(*Rails.groups)
-require "i18n_admin_utils"
+require 'i18n_admin_utils'
 
 module Dummy
   class Application < Rails::Application

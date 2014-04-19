@@ -5,6 +5,7 @@ module I18nAdminUtils
     attr_accessor :translations
 
     def initialize(key, location = nil)
+      @key = key
       @translations = {}
       @location = []
       @location << location unless location.nil?
@@ -16,6 +17,11 @@ module I18nAdminUtils
       I18nAdminUtils::Config.locales.each do |locale|
         @translations[locale] = I18n.t(key, :locale => locale, :default => nil)
       end
+    end
+
+    #Return list of the untranslated locales
+    def missing_translations
+      @translations.select { |x, v| v.nil? }
     end
 
     #Return boolean if at least on translation is missing

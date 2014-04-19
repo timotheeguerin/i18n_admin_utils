@@ -4,12 +4,11 @@ module I18nAdminUtils
     HTML_PLAIN_TEXT_REGEX = /(?<=>)(([^><])+)(?=<)/
 
     def self.search
-      results = find_translation
-      check_results(results)
+      find_translation_usage
     end
 
     #Search for all t('') usage in the given directory
-    def self.find_translation
+    def self.find_translation_usage
       results = SearchResult.new
       dirs = I18nAdminUtils::Config.search_folders
       dirs.each do |dir|
@@ -28,21 +27,6 @@ module I18nAdminUtils
       results
     end
 
-    def self.check_results(results)
-      output = SearchResult.new
-      results.each do |result|
-        key = result[:key]
-        I18nAdminUtils::Config.locales.each do |locale|
-          if  I18n.t(key, :locale => locale, :default => 'empty') == 'empty'
-            copy_result = result.clone
-            copy_result[:locale] = locale
-            output << copy_result
-          end
-        end
-      end
-      output
-    end
-
     def self.find_plain_text
       results = SearchResult.new
       dirs = I18nAdminUtils::Config.search_folders
@@ -57,7 +41,7 @@ module I18nAdminUtils
     def self.find_plain_text_in_file(filename)
       results = SearchResult.new
       File.open(filename).read.scan(HTML_PLAIN_TEXT_REGEX).each do |result|
-        results << {:key => result[0], :filename => filename} unless result[0].blank?
+        results << I18nAdminUtils::Translation.new(result[0], {:filename => filename}) unless result[0].blank?
       end
       results
     end

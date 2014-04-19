@@ -17,7 +17,11 @@ module I18nAdminUtils
     def []=(i, translation)
       existing = find_by_key(translation)
       if existing.nil?
-        @results[i]= translation
+        if i == -1
+          @results << translation
+        else
+          @results[i] = translation
+        end
       else
         existing.files += translation.files
       end

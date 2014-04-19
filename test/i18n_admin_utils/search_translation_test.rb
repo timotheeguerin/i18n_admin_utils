@@ -5,6 +5,8 @@ class SearchTranslationTest < ActiveSupport::TestCase
   end
 
   setup do
+    setup_i18n_backend
+    I18n.enforce_available_locales = false
     FileUtils.rm_rf(destination) #empty the dir
     @translations = ['translation1', 'test.translation2', 'super.super.translation3', 'test_pl.translation4']
     @plain_text = ['Hello', 'Welcome to this aswome werbsite', 'Blabla']
@@ -24,7 +26,7 @@ class SearchTranslationTest < ActiveSupport::TestCase
   end
 
   def generate_plain_text
-    filename = File.join(destination, "p_#{@plain_text.size}_use.rb")
+    filename = File.join(destination, "p_#{@plain_text.size}_use.erb")
     file = File.new(filename, 'w')
     @plain_text.each do |text|
       file.puts "<div>#{text}</div>"
@@ -33,7 +35,8 @@ class SearchTranslationTest < ActiveSupport::TestCase
   end
 
   test 'Find all the translations' do
-    results = I18nAdminUtils::SearchTranslation.find_translation
+    I18n.backend.reload!
+    results = I18nAdminUtils::SearchTranslation.find_translation_usage
     assert @translations.size == results.size, "Found different amount of translation: #{results.size} instead of #{@translations.size}"
 
     @translations.each do |translation|
