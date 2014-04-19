@@ -22,7 +22,6 @@ module I18nAdminUtils
           translation.locations << v
         end
       end
-      translation.translations = hash[:translations]
       translation
     end
 

@@ -21,12 +21,19 @@ $(document).ready () ->
       type: form.attr('method'),
       dataType: 'json',
       data: form.serialize()
-    }).success( (data) ->
+    }).success((data) ->
       if data.success
-        form.find('button:not(.nosubmit)').html("<span class='glyphicon glyphicon-ok'></span>")
+        button = form.find('button:not(.nosubmit)')
+        old_html = button.html()
+        button.width(button.width()) #So the button dont get smaller when changing the text
+        button.html("<span class='glyphicon glyphicon-ok'></span>")
+        setTimeout(() ->
+          button.html(old_html)
+          button.prop('disabled', false);
+        , 1500)
         form.find('div.alert').hide()
       else
-        handle_error(form,  data)
+        handle_error(form, data)
     ).error (data) ->
       handle_error(form, data)
     return false
