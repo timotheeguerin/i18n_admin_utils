@@ -26,8 +26,9 @@ module I18nAdminUtils
     end
 
     def show
+      puts params[:translation]
       unless params[:translation].nil?
-        render :partial => 'show', :locals => {:translation => params[:translation]}
+        render :partial => 'show', :locals => {:translation => I18nAdminUtils::Translation.from_hash(params[:translation])}
       end
     end
 

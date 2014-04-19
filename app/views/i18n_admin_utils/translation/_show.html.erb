@@ -1,21 +1,32 @@
+<% default_locale = I18nAdminUtils::Config.locales.first %>
 <div class="row">
-  <div class="col-md-1">
-    <b>Locale:</b> <%= translation[:locale] %>
+  <div class="col-md-12">
+    <div class="btn-group">
+      <% translation.translations.each do |locale, translation| %>
+          <% type = translation.blank? ? 'danger' : 'success' %>
+          <div class="btn btn-<%= type %> locale-tab <%= 'active' if locale == default_locale %>"
+               data-translation='<%= translation %>' data-locale='<%= locale %>'>
+            <%= locale %>
+          </div>
+      <% end %>
+    </div>
   </div>
+</div>
+<div class="row">
   <div class="col-md-5">
-    <b>Key:</b> <%= translation[:key] %>
+    <b>Key:</b> <%= translation.key %>
   </div>
   <div class="col-md-6">
-    <i><%= translation[:filename] %></i>
+
   </div>
 </div>
 <div class="row">
   <div class="col-md-6">
     <div>
-      <%= form_tag translation_edit_path, :class => 'translation_helper' do %>
-          <%= hidden_field_tag :locale, translation[:locale] %>
-          <%= hidden_field_tag :key, translation[:key] %>
-          <%= text_area_tag :value, '', :class => 'form-control autosize', 'data-update' => 'value_ta', :placeholder => 'Translate here...' %>
+      <%= form_tag translation_edit_path, :class => 'translation_form translation_helper' do %>
+          <%= hidden_field_tag :locale, default_locale %>
+          <%= hidden_field_tag :key, translation.key %>
+          <%= text_area_tag :value, translation.translations[default_locale], :class => 'form-control autosize', 'data-update' => 'value_ta', :placeholder => 'Translate here...' %>
           <button class='btn btn-default'>
             Add
           </button>
@@ -25,9 +36,16 @@
   <div class="col-md-6">
     <div class="editor_container">
       <div>
-        <%= rails_embed_editor(translation[:filename], :line => translation[:line], :radius => 4,
-                               :editormode => RailsEmbedEditor::EditorMode::READ_WRITE,
-                               :highlight => translation[:line]) %>
+        <% translation.locations.each do |location| %>
+            <div>
+              <i><%= location[:filename] %></i>
+            </div>
+            <div>
+              <%= rails_embed_editor(location[:filename], :line => location[:line], :radius => 4,
+                                     :editormode => RailsEmbedEditor::EditorMode::READ_WRITE,
+                                     :highlight => location[:line]) %>
+            </div>
+        <% end %>
       </div>
     </div>
   </div>

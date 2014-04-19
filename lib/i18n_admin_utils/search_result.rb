@@ -23,7 +23,7 @@ module I18nAdminUtils
           @results[i] = translation
         end
       else
-        existing.files += translation.files
+        existing.locations += translation.locations
       end
     end
 

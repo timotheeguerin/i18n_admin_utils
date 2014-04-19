@@ -42,6 +42,21 @@ $(document).ready () ->
     else
       container.show()
 
+
+  $(document).on 'click', '.translation_edit_container .locale-tab', () ->
+    tab = $(this)
+    active_tab = tab.parent().find('.locale-tab.active')
+    translation_edit_container = tab.closest('.translation_edit_container')
+    form = translation_edit_container.find('form.translation_form')
+    locale_input = form.find('input[name="locale"]')
+    text_input = form.find('textarea[name="value"]')
+    active_tab.data('translation', text_input.val())
+    text_input.val(tab.data('translation'))
+    locale_input.val(tab.data('locale'))
+    active_tab.removeClass('active')
+    tab.addClass('active')
+
+
   $(document).on 'keyup', 'input.translation_search', () ->
     input = $(this)
     val = input.val()
