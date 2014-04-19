@@ -6,6 +6,7 @@ require 'i18n_admin_utils/config'
 require 'i18n_admin_utils/search_translation'
 require 'i18n_admin_utils/search_result'
 require 'i18n_admin_utils/backend'
+require 'i18n_admin_utils/translation'
 
 module I18nAdminUtils
   def self.config(&block)

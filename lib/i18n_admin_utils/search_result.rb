@@ -14,20 +14,29 @@ module I18nAdminUtils
       @results[i]
     end
 
-    def []=(i, hash)
-      @results[i]= hash
+    def []=(i, translation)
+      existing = find_by_key(translation)
+      if existing.nil?
+        @results[i]= translation
+      else
+        existing.files += translation.files
+      end
     end
 
-    def <<(hash)
-      @results << hash
+    def <<(translation)
+      self[-1] = translation
     end
 
     def +(other)
       SearchResult.new(@results + other.results)
     end
 
+    def find_by_key(key)
+      @results.select { |h| h.key == key }.first
+    end
+
     def include_key?(key)
-      @results.any? { |h| h[:key] == key }
+      @results.any? { |h| h.key == key }
     end
 
     def each(&block)

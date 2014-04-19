@@ -8,6 +8,7 @@ module I18nAdminUtils
       check_results(results)
     end
 
+    #Search for all t('') usage in the given directory
     def self.find_translation
       results = SearchResult.new
       dirs = I18nAdminUtils::Config.search_folders
@@ -17,7 +18,7 @@ module I18nAdminUtils
           File.open(filename).each_line do |line|
             line.scan(/t\(("(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*')\)/).each do |result|
               key = result[0][1...-1]
-              results << {:key => key, :filename => filename, :line => i}
+              results << I18nAdminUtils::Translation.new(key, {:filename => filename, :line => i})
             end
             i += 1
           end
