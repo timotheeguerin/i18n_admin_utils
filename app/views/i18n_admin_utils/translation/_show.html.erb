@@ -12,16 +12,9 @@
     </div>
   </div>
 </div>
-<div class="row">
-  <div class="col-md-5">
+<div class="row" style="margin-top: 2rem">
+  <div class="col-md-6">
     <b>Key:</b> <%= translation.key %>
-  </div>
-  <div class="col-md-6">
-
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-6">
     <div>
       <%= form_tag translation_edit_path, :class => 'translation_form translation_helper' do %>
           <%= hidden_field_tag :locale, default_locale %>

@@ -3,8 +3,7 @@
          data-key='<%= translation.key %>'>
       <div class="row">
         <div class="col-md-1">
-          <% missing_translation = translation.missing_translations %>
-          <span>(<%= missing_translation.size %>)</span>
+          <%= translation_missing_icon(translation) %>
         </div>
         <div class="col-md-5">
           <%= translation.key %>

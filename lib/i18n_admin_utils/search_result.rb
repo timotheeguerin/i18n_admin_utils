@@ -54,5 +54,9 @@ module I18nAdminUtils
     def to_s
       @results.to_s
     end
+
+    def count
+      @results.size
+    end
   end
 end

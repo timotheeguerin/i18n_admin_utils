@@ -47,6 +47,7 @@ $translation_container_offset: $titleheight+$headerheight;
 div.translation_title {
   height: $titleheight;
 }
+
 div.translation_container {
   border-top: 1px solid $border-color;
   min-height: calc(100vh - #{$translation_container_offset});
@@ -145,3 +146,30 @@ div.translation_container {
   }
 }
 
+.color-range-0 {
+  color: $md_green
+}
+
+.color-range-1 {
+  color: #BABF24
+}
+
+.color-range-2 {
+  color: #ffc40d
+}
+
+.color-range-3 {
+  color: #BF6C24
+}
+
+.color-range-4 {
+  color: #BF2C24;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.greentext {
+  color: $md_green
+}
