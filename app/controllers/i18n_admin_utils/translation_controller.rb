@@ -26,9 +26,15 @@ module I18nAdminUtils
     end
 
     def show
-      puts params[:translation]
-      unless params[:translation].nil?
-        render :partial => 'show', :locals => {:translation => I18nAdminUtils::Translation.from_hash(params[:translation])}
+      if params[:translation].nil?
+        render :text => 'Error no params given'
+      else
+        translation = I18nAdminUtils::Translation.from_hash(params[:translation])
+        if translation.key.nil?
+          render :text => 'Error no key given'
+        else
+          render :partial => 'show', :locals => {:translation => translation}
+        end
       end
     end
 

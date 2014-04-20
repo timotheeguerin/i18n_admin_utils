@@ -50,30 +50,67 @@ class I18nAdminUtils::TranslationControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test 'should return error message when no params given' do
+  ###########################################################
+  #   Test the list_element action
+  ###########################################################
+  test 'List element should return error message when no params given' do
     get :list_element
     assert_response :success
     assert response.body.include?('Error')
   end
 
-  test 'should return error message when no key given' do
+  test 'List element should return error message when no key given' do
     get :list_element, :translation => {}
     assert_response :success
     assert response.body.include?('Error')
   end
 
-  test 'should get list element with no locations' do
+  test 'List element should get list element with no locations' do
     get :list_element, :translation => {:key => 'mykey', :locations => []}
     assert_response :success
   end
 
-  test 'should get list element with one locations' do
+  test 'List element should get list element with one locations' do
     get :list_element, :translation => {:key => 'mykey', :locations => [{:filename => 'filename'}]}
     assert_response :success
   end
 
-  test 'should get list element with mutliple locations' do
+  test 'List element should get list element with multiple locations' do
     get :list_element, :translation => {:key => 'mykey', :locations => [{:filename => 'filename1'}, {:filename => 'filename2'}]}
+    assert_response :success
+  end
+
+  ###########################################################
+  #   Test the show action
+  ###########################################################
+  test 'Show should return error message when no params given' do
+    get :show
+    assert_response :success
+    assert response.body.include?('Error')
+  end
+
+  test 'Show should return error message when no key given' do
+    get :show, :translation => {}
+    assert_response :success
+    assert response.body.include?('Error')
+  end
+
+  test 'Show should get list element with no locations' do
+    get :show, :translation => {:key => 'mykey', :locations => []}
+    assert_response :success
+  end
+
+  test 'Show should get list element with one locations' do
+    tmpfile1 = File.dirname(__FILE__)+ '/template/contentfile1.erb'
+    get :show, :translation => {:key => 'mykey', :locations => [{:filename => tmpfile1, :line => 5}]}
+    assert_response :success
+  end
+
+  test 'Show should get list element with multiple locations' do
+    tmpfile1 = File.dirname(__FILE__)+ '/template/contentfile1.erb'
+    tmpfile2 = File.dirname(__FILE__)+ '/template/contentfile2.erb'
+    get :show, :translation => {:key => 'mykey', :locations =>
+        [{:filename => tmpfile1, :line => 4}, {:filename => tmpfile2, :line => 7}]}
     assert_response :success
   end
 end
