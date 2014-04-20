@@ -50,5 +50,30 @@ class I18nAdminUtils::TranslationControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test 'should return error message when no params given' do
+    get :list_element
+    assert_response :success
+    assert response.body.include?('Error')
+  end
 
+  test 'should return error message when no key given' do
+    get :list_element, :translation => {}
+    assert_response :success
+    assert response.body.include?('Error')
+  end
+
+  test 'should get list element with no locations' do
+    get :list_element, :translation => {:key => 'mykey', :locations => []}
+    assert_response :success
+  end
+
+  test 'should get list element with one locations' do
+    get :list_element, :translation => {:key => 'mykey', :locations => [{:filename => 'filename'}]}
+    assert_response :success
+  end
+
+  test 'should get list element with mutliple locations' do
+    get :list_element, :translation => {:key => 'mykey', :locations => [{:filename => 'filename1'}, {:filename => 'filename2'}]}
+    assert_response :success
+  end
 end

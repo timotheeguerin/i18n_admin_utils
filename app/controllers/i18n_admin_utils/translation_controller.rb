@@ -39,7 +39,17 @@ module I18nAdminUtils
     end
 
     def list_element
-      render :partial => 'list_element', :locals => {:translation => I18nAdminUtils::Translation.from_hash(params[:translation])}
+      if params[:translation].nil?
+        render :text => 'Error no translation given'
+      else
+        translation = I18nAdminUtils::Translation.from_hash(params[:translation])
+        if translation.key.nil?
+          render :text => 'Error no key given'
+        else
+          render :partial => 'list_element', :locals => {:translation => translation}
+        end
+
+      end
     end
 
     def i18n_redirect(message, success = true)
