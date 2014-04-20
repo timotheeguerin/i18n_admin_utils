@@ -59,10 +59,22 @@ $(document).ready () ->
   $(document).on 'translation-saved', '.translation_edit_container form.translation_form button', () ->
     button = $(this)
     form = button.closest('form.translation_form')
+    #Update the tab
     locale = form.find('input[name="locale"]')
     container = button.closest('.translation_edit_container')
     active_tab = container.find('.locale-tab[data-locale="' + locale.val() + '"]')
     active_tab.removeClass('btn-danger').addClass('btn-success')
+
+    #Update the left menu
+    list = button.closest('.translation_container').find('.translation_list')
+    key = form.find('input[name="key"]')
+    element = list.find('.translation_item[data-key="' + key.val() + '"]')
+    $.get(element.data('reload-url'), {
+      translation: element.data('translation')
+    }
+
+    ).success (data) ->
+      element.html( $(data).html())
 
   $(document).on 'keyup', 'input.translation_search', () ->
     input = $(this)
@@ -74,7 +86,7 @@ $(document).ready () ->
     if val.length == 0
       show_translation_element(elements)
     else
-      query = '[data-locale*="' + val + '"],[data-key*="' + val + '"], [data-filename*="' + val + '"]'
+      query = '[data-key*="' + val + '"]'
       show_translation_element(elements.filter(query))
       hide_translation_element(elements.not(query))
 

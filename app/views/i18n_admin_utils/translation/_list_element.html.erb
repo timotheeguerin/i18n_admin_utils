@@ -1,0 +1,14 @@
+<div class="translation_item" data-translation='<%= translation.to_json %>' data-reload-url='<%= translation_list_element_path %>'
+     data-key='<%= translation.key %>'>
+  <div class="row">
+    <div class="col-md-1">
+      <%= translation_missing_icon(translation) %>
+    </div>
+    <div class="col-md-5">
+      <%= translation.key %>
+    </div>
+    <div class="col-md-6 ">
+      <%= translation_locations_compact_list(translation) %>
+    </div>
+  </div>
+</div>
