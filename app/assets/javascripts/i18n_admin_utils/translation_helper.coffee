@@ -27,6 +27,7 @@ $(document).ready () ->
         old_html = button.html()
         button.width(button.width()) #So the button dont get smaller when changing the text
         button.html("<span class='glyphicon glyphicon-ok'></span>")
+        button.trigger('translation-saved')
         setTimeout(() ->
           button.html(old_html)
           button.prop('disabled', false);

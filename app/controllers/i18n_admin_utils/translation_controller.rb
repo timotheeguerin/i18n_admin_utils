@@ -38,6 +38,10 @@ module I18nAdminUtils
       render :partial => 'missing_list', :layouts => false, :locals => {:translations => translations}
     end
 
+    def list_element
+      render :partial => 'list_element', :locals => {:translation => I18nAdminUtils::Translation.from_hash(params[:translation])}
+    end
+
     def i18n_redirect(message, success = true)
       if request.xhr?
         render :json => {:success => success, :message => message}

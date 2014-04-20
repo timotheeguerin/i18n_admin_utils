@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'turbolinks', '>=0'
   s.add_dependency 'sass-rails', '~> 4.0.2'
   s.add_dependency 'bootstrap-sass', '~> 3.1.1', '~> 3.1.0'
-  s.add_dependency 'rails_embed_editor', '>= 1.0.0'
+  s.add_dependency 'rails_embed_editor', '>= 1.0.1'
   s.add_development_dependency 'sqlite3', '>= 0'
   s.add_development_dependency 'tzinfo-data'
 end

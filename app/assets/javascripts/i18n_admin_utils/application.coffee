@@ -56,6 +56,13 @@ $(document).ready () ->
     active_tab.removeClass('active')
     tab.addClass('active')
 
+  $(document).on 'translation-saved', '.translation_edit_container form.translation_form button', () ->
+    button = $(this)
+    form = button.closest('form.translation_form')
+    locale = form.find('input[name="locale"]')
+    container = button.closest('.translation_edit_container')
+    active_tab = container.find('.locale-tab[data-locale="' + locale.val() + '"]')
+    active_tab.removeClass('btn-danger').addClass('btn-success')
 
   $(document).on 'keyup', 'input.translation_search', () ->
     input = $(this)

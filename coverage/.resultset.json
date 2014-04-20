@@ -234,6 +234,10 @@
         0,
         null,
         null,
+        1,
+        0,
+        null,
+        null,
         null
       ],
       "C:/dev/ws/ruby/i18n_admin_utils/lib/i18n_admin_utils/backend.rb": [
@@ -595,6 +599,33 @@
         1,
         1,
         null,
+        null,
+        1,
+        4,
+        4,
+        4,
+        0,
+        null,
+        null,
+        4,
+        null,
+        null,
+        null,
+        null,
+        1,
+        4,
+        null,
+        0,
+        4,
+        4,
+        null,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        null,
         null
       ],
       "C:/dev/ws/ruby/i18n_admin_utils/test/generators/install_generator_test.rb": [
@@ -818,6 +849,6 @@
         null
       ]
     },
-    "timestamp": 1397944631
+    "timestamp": 1398018026
   }
 }
