@@ -6,6 +6,7 @@ module I18nAdminUtils
       setup_i18n_backend
     end
 
+
     test 'Test []= works' do
       results = SearchResult.new
       test_position = [2, 4, 3, 0]
@@ -19,6 +20,13 @@ module I18nAdminUtils
         key = "mykey#{position}"
         assert results.results[position].key = key, "Excpecting key to be #{key} but is #{results.results[position].key}"
       end
+    end
+
+    test 'Test [] works' do
+      results = SearchResult.new
+      results[3]= Translation.new('mykey', 'filename')
+      assert !results[3].nil?
+      assert results[3].key == 'mykey'
     end
 
     test 'Test merge same key' do

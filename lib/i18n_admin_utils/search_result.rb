@@ -6,9 +6,6 @@ module I18nAdminUtils
       @results = array
     end
 
-    def size
-      @results.size
-    end
 
     def [](i)
       @results[i]
