@@ -30,13 +30,15 @@
     <div class="editor_container">
       <div>
         <% translation.locations.each do |location| %>
-            <div>
-              <i><%= location[:filename] %></i>
-            </div>
-            <div>
-              <%= rails_embed_editor(location[:filename], :line => location[:line], :radius => 4,
-                                     :editormode => RailsEmbedEditor::EditorMode::READ_WRITE,
-                                     :highlight => location[:line]) %>
+            <div class="location_container">
+              <div>
+                <i><%= location[:filename] %></i>
+              </div>
+              <div>
+                <%= rails_embed_editor(location[:filename], :line => location[:line], :radius => 4,
+                                       :editormode => RailsEmbedEditor::EditorMode::READ_WRITE,
+                                       :highlight => location[:line]) %>
+              </div>
             </div>
         <% end %>
       </div>

@@ -35,6 +35,9 @@ body {
 }
 
 .editor_container {
+  .location_container{
+    margin-bottom: 3rem;
+  }
   .ace_editor {
     overflow: hidden;
   }
