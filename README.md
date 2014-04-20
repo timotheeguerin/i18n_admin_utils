@@ -25,7 +25,6 @@ Retreive all the translation used inside your application and check they have be
 Check all the text you have entered in your application withour using t() | **TODO**
 
 Other:
-* Merge duplicate translation into one(display the number of use)
 * Make account control(Each user can show the list on language he is charged of tranlating)
 
 #Installation
@@ -63,7 +62,7 @@ To spot those translation you can add the class `.translation_missing` to your c
 ### List of all untranslated key in app 
 Search the entire project for the use of the t('') method. All the untranslated key without a translation will be displayed. By clicking on the `search` icon you can see where you are using this translation in your code(And also live editing the file([Rails embed editor](https://github.com/timcolonel/rails_embed_editor)).
 
-![capture](https://cloud.githubusercontent.com/assets/1031227/2743438/50c16b80-c714-11e3-8f63-f7892ff50b19.PNG)
+![capture](https://cloud.githubusercontent.com/assets/1031227/2751366/7aeb831c-c8c9-11e3-9ba3-05740032a255.PNG)
 
 
 Go to `/translation` (Loading might be long if your app is large). You should have a list of key to translate(Don't foregt to setup the locales your application use in the config file). The plugin reload the translation after updating one(You can disable it in the config). So reloading this page should update the translation
