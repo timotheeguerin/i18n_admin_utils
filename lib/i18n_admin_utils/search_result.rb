@@ -36,27 +36,20 @@ module I18nAdminUtils
     end
 
     def find_by_key(key)
-      @results.select { |h| h.key == key }.first
+      @results.select { |h| not h.nil? and h.key == key }.first
     end
 
     def include_key?(key)
-      @results.any? { |h| h.key == key }
+      @results.any? { |h| not h.nil? and h.key == key }
     end
 
-    def each(&block)
-      @results.each(&block)
-    end
-
-    def delete(element)
-      @results.delete(element)
-    end
 
     def to_s
       @results.to_s
     end
 
-    def count
-      @results.size
-    end
+    delegate :first, :last, :size, :each, :delete, :to => :results
+
+    alias :count :size
   end
 end

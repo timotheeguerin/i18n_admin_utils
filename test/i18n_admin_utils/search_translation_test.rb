@@ -6,7 +6,6 @@ class SearchTranslationTest < ActiveSupport::TestCase
 
   setup do
     setup_i18n_backend
-    I18n.enforce_available_locales = false
     FileUtils.rm_rf(destination) #empty the dir
     @translations = ['translation1', 'test.translation2', 'super.super.translation3', 'test_pl.translation4']
     @plain_text = ['Hello', 'Welcome to this aswome werbsite', 'Blabla']

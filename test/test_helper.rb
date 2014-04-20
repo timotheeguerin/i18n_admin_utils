@@ -29,6 +29,7 @@ class ActiveSupport::TestCase
   def setup_i18n_backend
     I18n.backend = I18n::Backend::Simple.new
     I18n.load_path = Dir[Rails.root.join(i18n_backend_folder, '*.{rb,yml}').to_s]
+    I18n.enforce_available_locales = false
     I18n.backend.reload!
   end
   def reload_i18n_path
