@@ -1,11 +1,11 @@
 require 'test_helper'
+
 module I18nAdminUtils
   class SearchResultTest < ActiveSupport::TestCase
 
     def setup
       setup_i18n_backend
     end
-
 
     test 'Test []= works' do
       results = SearchResult.new
@@ -54,7 +54,5 @@ module I18nAdminUtils
         assert results.include_key?(key), "Results should include key `#{key}`!"
       end
     end
-
-
   end
 end

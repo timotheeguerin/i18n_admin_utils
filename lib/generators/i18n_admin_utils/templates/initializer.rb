@@ -1,4 +1,4 @@
-if Rails.env.development?
+if defined? I18nAdminUtils and defined? I18nAdminUtils.config #Load the config only if the gem is required(development mode only)
   I18nAdminUtils.config do |config|
 
     #Specify the backend if you are using the chain(it will use the first one by default)

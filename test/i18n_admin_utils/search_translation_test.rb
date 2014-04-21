@@ -1,4 +1,5 @@
 require 'test_helper'
+
 class SearchTranslationTest < ActiveSupport::TestCase
   def destination
     File.expand_path('../../tmp/translation_use', __FILE__)
