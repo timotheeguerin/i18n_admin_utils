@@ -21,9 +21,32 @@ class I18nAdminUtils::TranslationControllerTest < ActionController::TestCase
     I18nAdminUtils::Config.search_folders =[File.expand_path('../../tmp/translation_use', __FILE__)]
   end
 
+
   test 'should get index' do
     get :index
     assert_response :success
+
+  end
+
+  ###########################################################
+  #   Test the key action
+  ###########################################################
+  test 'Should get json when ajax' do
+    xhr :get, :edit
+    assert_nothing_raised do
+      JSON.parse(@response.body)
+    end
+  end
+
+  test 'Should get redirected when not ajax request' do
+    @request.env['HTTP_REFERER'] = '/'
+    get :edit
+    assert_response :redirect
+  end
+
+  test 'No key given should return error' do
+    xhr :get, :edit
+    assert !JSON.parse(@response.body)['success'], "Response should be 'success' but is #{@response.body}"
   end
 
   test 'ajax should add translation with locale and key seperate' do
@@ -44,6 +67,9 @@ class I18nAdminUtils::TranslationControllerTest < ActionController::TestCase
     assert I18n.t(key, :locale => locale) == value, 'Translation should have been added'
   end
 
+  ###########################################################
+  #   Test the list action
+  ###########################################################
   test 'should get missing list' do
     I18n.backend.reload!
     get :missing_list

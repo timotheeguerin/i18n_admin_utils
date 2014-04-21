@@ -5,7 +5,7 @@ module I18nAdminUtils
 
     def edit
       if params[:key].nil?
-        i18n_redirect('No key specified')
+        i18n_redirect('No key specified', false)
       else
         key = params[:key]
         locale = params[:locale]
