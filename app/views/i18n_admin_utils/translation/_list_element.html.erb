@@ -1,5 +1,5 @@
 <div class="translation_item" data-translation='<%= translation.to_json %>' data-reload-url='<%= translation_list_element_path %>'
-     data-key='<%= translation.key %>'>
+     data-key='<%= translation.key %>' data-completed='<%= not translation.missing_translation? %>'>
   <div class="row">
     <div class="col-md-1">
       <%= translation_missing_icon(translation) %>

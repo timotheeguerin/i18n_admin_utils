@@ -74,21 +74,15 @@ $(document).ready () ->
     }
 
     ).success (data) ->
-      element.html( $(data).html())
+      element.html($(data).html())
+
+  $(document).on 'click', '.translation_filter .show-completed', () ->
+    button = $(this)
+    button.toggleClass('active')
+    filter(button.closest('.translation_filter'))
 
   $(document).on 'keyup', 'input.translation_search', () ->
-    input = $(this)
-    val = input.val()
-
-
-    container = input.closest '.translation_container'
-    elements = container.find('.translation_list .translation_item')
-    if val.length == 0
-      show_translation_element(elements)
-    else
-      query = '[data-key*="' + val + '"]'
-      show_translation_element(elements.filter(query))
-      hide_translation_element(elements.not(query))
+    filter($(this).closest('.translation_filter'))
 
   $(document).on 'click', '.translation_list .translation_item', () ->
     item = $(this)
@@ -103,6 +97,7 @@ $(document).ready () ->
     }).success (data) ->
       container.html(data)
       window.load_script_on(container)
+
 
 #Rerun this command for reloading script for new element added with ajax for example
 window.load_script_on = (container) ->
@@ -124,3 +119,21 @@ hide_translation_element = (elements) ->
     element = $(this)
     if  element.is ':visible'
       element.slideUp(200)
+
+
+filter = (filter_container) ->
+  input = filter_container.find('input.translation_search')
+  show_completed_button = filter_container.find('.btn.show-completed')
+  val = input.val()
+
+  container = input.closest '.translation_container'
+  elements = container.find('.translation_list .translation_item')
+  query = ''
+  query += '[data-key*="' + val + '"]'  if val.length > 0
+  query += '[data-completed=false]' unless show_completed_button.hasClass('active')
+
+  if query.length >0
+    show_translation_element(elements.filter(query))
+    hide_translation_element(elements.not(query))
+  else
+    show_translation_element(elements)
