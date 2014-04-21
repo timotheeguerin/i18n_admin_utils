@@ -34,15 +34,12 @@ module I18nAdminUtils
 
     #Return list of the untranslated locales
     def missing_translations
-      @translations.select { |x, v| v.blank? }
+      @translations.select { |x, v| v.nil? or v.blank? }
     end
 
     #Return boolean if at least on translation is missing
     def missing_translation?
-      @translations.each do |k, v|
-        return true if v.nil?
-      end
-      false
+      @translations.any? { |x, v| v.nil? or v.blank? }
     end
   end
 end
