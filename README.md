@@ -25,6 +25,8 @@ Retreive all the translation used inside your application and check they have be
 Check all the text you have entered in your application withour using t() | **TODO**
 
 Other:
+* Move the scan functionality to a rake task `rake i18n_admin_utils:scan` that copy all translation key found to the database. The translation page will then only display keys with values as nil
+* Add posiblility to sync yml with database, development and production translations
 * Make account control(Each user can show the list on language he is charged of tranlating)
 
 #Installation
