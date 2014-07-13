@@ -25,6 +25,8 @@ Retreive all the translation used inside your application and check they have be
 Check all the text you have entered in your application withour using t() | **TODO**
 
 Other:
+* Move the scan functionality to a rake task `rake i18n_admin_utils:scan` that copy all translation key found to the database. The translation page will then only display keys with values as nil
+* Add posiblility to sync yml with database, development and production translations
 * Make account control(Each user can show the list on language he is charged of tranlating)
 
 #Installation
@@ -59,10 +61,10 @@ To spot those translation you can add the class `.translation_missing` to your c
 }
 ```
 
-### List of all untranslated key in app 
-Search the entire project for the use of the t('') method. All the untranslated key without a translation will be displayed. By clicking on the `search` icon you can see where you are using this translation in your code(And also live editing the file([Rails embed editor](https://github.com/timcolonel/rails_embed_editor)).
+### List of all keys used in app 
+Search the entire project for the use of the t('') method. Then check for all given local for missing translations. You can see where this key is being used(And also live editing the file([Rails embed editor](https://github.com/timcolonel/rails_embed_editor) if you need to change the key).
 
-![capture](https://cloud.githubusercontent.com/assets/1031227/2751366/7aeb831c-c8c9-11e3-9ba3-05740032a255.PNG)
+![capture](https://cloud.githubusercontent.com/assets/1031227/2759141/c0958548-c99b-11e3-973a-374ed107e8b5.PNG)
 
 
 Go to `/translation` (Loading might be long if your app is large). You should have a list of key to translate(Don't foregt to setup the locales your application use in the config file). The plugin reload the translation after updating one(You can disable it in the config). So reloading this page should update the translation
